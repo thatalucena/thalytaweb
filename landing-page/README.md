@@ -58,7 +58,7 @@ landing-page/
 | Destaque | Instrument Serif itálico em uma palavra ou numa expressão curta de destaque por título. |
 | Viúvas | `text-wrap: pretty` + `no-widows.js`, que junta as duas últimas palavras de cada parágrafo, item e título. |
 | Menu | Serviços, Portfólio, Processo e Dúvidas abrem páginas próprias. A página atual fica marcada no menu. |
-| Formulário | Ainda não publicado. Com `CONFIG.formUrl` vazio, os botões com interesse abrem o WhatsApp com a mensagem certa, e os genéricos levam à seção `/#diagnostico`. Quando o formulário existir, preencha a URL completa (a Vercel não aceita `contato.thalytalucena.vercel.app`, então ele terá outro endereço, como `thalytaweb-contato.vercel.app`). |
+| Formulário | Ainda não publicado. Com `CONFIG.formUrl` vazio, os botões com interesse abrem o WhatsApp com a mensagem certa, e os genéricos levam à seção `/#diagnostico`. Quando o formulário existir, preencha a URL completa (a Vercel não aceita `contato.thalytalucena.vercel.app`, então ele terá outro endereço, como `contatothalyta.vercel.app`). |
 | Ofertas | Site sob orçamento **com taxa de manutenção mensal** (não existe mais a menção a "sem fidelidade"). Tráfego a partir de R$ 1.000/mês de honorário, verba à parte, mínimo de 3 meses. |
 | Atendimento | Sem horário publicado. Só "respondo no mesmo dia útil". |
 | Depoimentos | Pedro (Clínica Longeva), Lucas (Lok Mob) e Noemi Lucena, com o texto enviado. Só o acento de "esperávamos" e o ponto final foram ajustados. Também estão no schema como `Review`, sem nota. |

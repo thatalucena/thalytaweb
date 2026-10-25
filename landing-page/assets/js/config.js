@@ -6,7 +6,7 @@ export const CONFIG = {
 
   // Formulário em etapas (repositório próprio, ainda não publicado).
   // Vazio = os botões de diagnóstico abrem o WhatsApp com a mensagem do interesse.
-  // Quando publicar, coloque a URL completa, por exemplo 'https://thalytaweb-contato.vercel.app/'.
+  // Quando publicar, coloque a URL completa, por exemplo 'https://contatothalyta.vercel.app/'.
   formUrl: '',
 
   // IDs de medição. Vazio = a tag não carrega.

@@ -14,8 +14,8 @@ Três peças, mesma marca, mesmo objetivo: gerar leads qualificados para **sites
 | Peça | Status | Endereço | Papel |
 |---|---|---|---|
 | Landing page (site principal) | **Pronta e publicada** | https://thalytalucena.vercel.app | Explica, prova e conduz ao formulário |
-| Link da bio | A fazer | sugestão: `thalytaweb-link.vercel.app` | Converte o clique do Instagram @thalyta.web |
-| Formulário em etapas | A fazer | sugestão: `thalytaweb-contato.vercel.app` | Qualifica e grava o lead |
+| Link da bio | A fazer | `biothalyta.vercel.app` | Converte o clique do Instagram @thalyta.web |
+| Formulário em etapas | A fazer | `contatothalyta.vercel.app` | Qualifica e grava o lead |
 
 Fluxo: Instagram → link da bio → formulário (principal), landing page ou WhatsApp. Anúncios → landing page → formulário. Todos repassam UTMs por query string.
 
@@ -49,7 +49,7 @@ thalytaweb/
 └── forms/                    formulário em etapas (ref/ = telas aprovadas, img/ = fotos e prints)
 ```
 
-Monorepo: um único repositório no GitHub e um projeto Vercel por pasta, cada um com seu **Root Directory** (`landing-page`, `link-bio`, `forms`). Os documentos da raiz valem para as três peças.
+Monorepo: um único repositório no GitHub e um projeto Vercel por pasta, cada um com seu **Root Directory**: `thalytalucena` → `landing-page`, `biothalyta` → `link-bio`, `contatothalyta` → `forms`. Os documentos da raiz valem para as três peças.
 
 **Preservar sempre:** `id visual/`, `references/`, `print ref/`, `design system/`, `img/`. São originais de referência.
 
