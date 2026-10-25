@@ -1,0 +1,1044 @@
+/* ==========================================================================
+   Componentes: botões, header, menu, barra mobile, selo, faixa, cartões
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Botões (pílula com ícone circular, padrão Loudly, cores da marca)
+   -------------------------------------------------------------------------- */
+
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 56px;
+  padding: 0 24px;
+  border: 2px solid transparent;
+  border-radius: var(--r-pill);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: transform 0.25s var(--ease-out), box-shadow 0.25s var(--ease-out), background-color 0.2s ease, color 0.2s ease;
+}
+
+.btn--icon {
+  padding: 0 8px 0 24px;
+}
+
+.btn__icon {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--r-pill);
+  flex: none;
+  transition: transform 0.3s var(--ease-out);
+}
+
+.btn__icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--sombra-dura-sm);
+}
+
+.btn:hover .btn__icon {
+  transform: rotate(-45deg);
+}
+
+.btn:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* Primário no claro: bordô com texto creme */
+.btn--bordo {
+  background: var(--bordo);
+  color: var(--creme);
+}
+
+.btn--bordo .btn__icon {
+  background: var(--oliva);
+  color: var(--vinho);
+}
+
+.btn--bordo:hover {
+  background: var(--bordo-escuro);
+}
+
+/* Primário no escuro: oliva com texto vinho */
+.btn--oliva {
+  background: var(--oliva);
+  color: var(--vinho);
+}
+
+.btn--oliva .btn__icon {
+  background: var(--vinho);
+  color: var(--oliva);
+}
+
+.btn--oliva:hover {
+  background: var(--oliva-hover);
+  box-shadow: 4px 4px 0 #F6EFE2;
+}
+
+/* Secundário no claro */
+.btn--outline {
+  border-color: var(--vinho);
+  color: var(--vinho);
+  background: transparent;
+}
+
+.btn--outline:hover {
+  background: var(--marrom);
+  border-color: var(--marrom);
+  color: var(--creme);
+}
+
+/* Secundário no escuro */
+.btn--outline-light {
+  border-color: var(--creme);
+  color: var(--creme);
+  background: transparent;
+}
+
+.btn--outline-light:hover {
+  background: var(--creme);
+  color: var(--vinho);
+  box-shadow: 4px 4px 0 #B8C29A;
+}
+
+.btn svg.btn__lead {
+  width: 20px;
+  height: 20px;
+  flex: none;
+}
+
+.btn--block {
+  width: 100%;
+}
+
+/* Link fantasma: "Quero esse serviço →" */
+.link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 48px;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 6px;
+  text-decoration-thickness: 2px;
+}
+
+.link-arrow svg {
+  width: 18px;
+  height: 18px;
+  transition: transform 0.25s var(--ease-out);
+}
+
+.link-arrow:hover svg {
+  transform: translateX(4px);
+}
+
+/* Círculo de seta (linhas de serviço, cards de escolha) */
+.arrow-circle {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: var(--r-pill);
+  background: var(--vinho);
+  color: var(--oliva);
+  flex: none;
+  transition: transform 0.35s var(--ease-out), background-color 0.2s ease;
+}
+
+.arrow-circle svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* --------------------------------------------------------------------------
+   Logo horizontal (THALYTA + estrela + lucena)
+   -------------------------------------------------------------------------- */
+
+.logo {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  color: inherit;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.logo__first {
+  font-weight: 800;
+  font-stretch: 75%;
+  font-size: 22px;
+  line-height: 22px;
+  letter-spacing: 0.2px;
+  text-transform: uppercase;
+}
+
+.logo__star {
+  width: 10px;
+  height: 10px;
+  align-self: center;
+}
+
+.logo__last {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 24px;
+  line-height: 22px;
+}
+
+/* --------------------------------------------------------------------------
+   Header fixo
+   -------------------------------------------------------------------------- */
+
+.site-header {
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  right: 16px;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  pointer-events: none;
+}
+
+.site-header > * {
+  pointer-events: auto;
+}
+
+.site-header__brand {
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  min-height: 48px;
+  padding: 0 20px;
+  border-radius: var(--r-pill);
+  background: var(--vinho);
+  color: var(--creme);
+  box-shadow: inset 0 0 0 1.5px #F6EFE240;
+}
+
+.site-header__brand .logo__star,
+.site-header__brand .logo__last {
+  color: var(--oliva);
+}
+
+.site-header__nav {
+  display: none;
+}
+
+.site-header__cta {
+  display: none;
+}
+
+.menu-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 48px;
+  padding: 0 20px;
+  border: 0;
+  border-radius: var(--r-pill);
+  background: var(--oliva);
+  color: var(--vinho);
+  font-weight: 700;
+  font-size: 15px;
+  box-shadow: inset 0 0 0 1.5px var(--vinho);
+}
+
+.menu-toggle__bars {
+  position: relative;
+  width: 18px;
+  height: 12px;
+}
+
+.menu-toggle__bars span {
+  position: absolute;
+  left: 0;
+  width: 18px;
+  height: 2px;
+  border-radius: 2px;
+  background: currentColor;
+  transition: transform 0.3s var(--ease-out), top 0.3s var(--ease-out);
+}
+
+.menu-toggle__bars span:nth-child(1) { top: 2px; }
+.menu-toggle__bars span:nth-child(2) { top: 8px; }
+
+.menu-toggle[aria-expanded="true"] .menu-toggle__bars span:nth-child(1) {
+  top: 5px;
+  transform: rotate(45deg);
+}
+
+.menu-toggle[aria-expanded="true"] .menu-toggle__bars span:nth-child(2) {
+  top: 5px;
+  transform: rotate(-45deg);
+}
+
+@media (min-width: 900px) {
+  .site-header {
+    top: 24px;
+    left: 24px;
+    right: 24px;
+  }
+
+  .menu-toggle {
+    display: none;
+  }
+
+  .site-header__nav {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    min-height: 56px;
+    padding: 0 4px;
+    border-radius: var(--r-pill);
+    background: #F6EFE2E6;
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    box-shadow: inset 0 0 0 1.5px var(--vinho);
+  }
+
+  .site-header__nav a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 48px;
+    padding: 0 18px;
+    border-radius: var(--r-pill);
+    color: var(--vinho);
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+  .site-header__nav a:hover,
+  .site-header__nav a[aria-current] {
+    background: var(--vinho);
+    color: var(--creme);
+  }
+
+  .site-header__cta {
+    display: inline-flex;
+    min-height: 56px;
+    font-size: 15px;
+  }
+
+  .site-header__cta .btn__icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  /* Sobre fundo escuro o CTA vira oliva (regra de cor da marca) */
+  .site-header[data-on="dark"] .site-header__cta {
+    background: var(--oliva);
+    color: var(--vinho);
+  }
+
+  .site-header[data-on="dark"] .site-header__cta .btn__icon {
+    background: var(--vinho);
+    color: var(--oliva);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Menu em tela cheia (mobile)
+   -------------------------------------------------------------------------- */
+
+.menu-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 40px;
+  padding: 120px 24px 40px;
+  background: var(--vinho);
+  color: var(--creme);
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out, visibility 0s linear 0.3s;
+}
+
+.menu-overlay.is-open {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.menu-overlay__links a {
+  display: block;
+  padding: 4px 0;
+  font-weight: 800;
+  font-stretch: 75%;
+  font-size: 56px;
+  line-height: 56px;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.menu-overlay__links a[aria-current] em,
+.menu-overlay__links a:hover em,
+.menu-overlay__links a:focus-visible em {
+  color: var(--oliva);
+}
+
+.menu-overlay__links em {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-stretch: 100%;
+  text-transform: none;
+  font-size: 22px;
+  color: var(--oliva);
+  vertical-align: top;
+  margin-right: 8px;
+}
+
+.menu-overlay__foot {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.menu-overlay__foot p {
+  color: #F6EFE2B3;
+  font-size: 14px;
+}
+
+@media (min-width: 900px) {
+  .menu-overlay { display: none; }
+}
+
+/* --------------------------------------------------------------------------
+   Barra inferior fixa (mobile)
+   -------------------------------------------------------------------------- */
+
+.mobile-bar {
+  position: fixed;
+  left: 8px;
+  right: 8px;
+  bottom: 8px;
+  z-index: 80;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  border-radius: 20px;
+  background: var(--branco);
+  box-shadow: 0 0 0 1.5px var(--vinho), var(--sombra-suave);
+  transform: translateY(140%);
+  transition: transform 0.4s var(--ease-out);
+}
+
+.mobile-bar.is-visible {
+  transform: translateY(0);
+}
+
+.mobile-bar__wa {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  min-height: 56px;
+  border-radius: 14px;
+  border: 2px solid var(--vinho);
+  color: var(--vinho);
+  flex: none;
+}
+
+.mobile-bar__wa svg {
+  width: 22px;
+  height: 22px;
+}
+
+.mobile-bar .btn {
+  flex: 1;
+  border-radius: 14px;
+}
+
+@media (min-width: 900px) {
+  .mobile-bar { display: none; }
+}
+
+/* --------------------------------------------------------------------------
+   Selo circular serrilhado
+   -------------------------------------------------------------------------- */
+
+.seal {
+  position: relative;
+  width: 148px;
+  height: 148px;
+}
+
+.seal__ring {
+  width: 100%;
+  height: 100%;
+}
+
+.seal__center {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+}
+
+.seal__center span {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 40px;
+  line-height: 40px;
+}
+
+/* --------------------------------------------------------------------------
+   Faixa diagonal de prova (uma por página)
+   -------------------------------------------------------------------------- */
+
+/* O wrapper ocupa exatamente a largura da tela e corta só na horizontal */
+.ribbon-wrap {
+  position: relative;
+  z-index: 5;
+  margin: -36px -8px;
+  overflow-x: clip;
+  overflow-y: visible;
+}
+
+.ribbon {
+  position: relative;
+  margin: 0 -40px;
+  padding: 14px 0;
+  background: var(--oliva);
+  color: var(--vinho);
+  border-block: 2px solid var(--vinho);
+  transform: rotate(-4deg);
+  overflow: hidden;
+}
+
+.ribbon__track {
+  display: flex;
+  width: max-content;
+}
+
+.ribbon__group {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  padding-right: 28px;
+  flex: none;
+}
+
+.ribbon__item {
+  font-weight: 800;
+  font-stretch: 75%;
+  font-size: 24px;
+  line-height: 28px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.ribbon .star {
+  width: 18px;
+  height: 18px;
+  color: var(--bordo);
+}
+
+@media (min-width: 600px) {
+  .ribbon-wrap { margin: -40px -12px; }
+}
+
+@media (min-width: 900px) {
+  .ribbon-wrap {
+    margin: -44px -12px;
+  }
+
+  .ribbon {
+    margin: 0 -60px;
+    padding: 18px 0;
+    transform: rotate(-2.5deg);
+  }
+
+  .ribbon__item { font-size: 32px; line-height: 36px; }
+  .ribbon__group { gap: 36px; padding-right: 36px; }
+}
+
+/* --------------------------------------------------------------------------
+   Cartão de vidro (prova flutuante no hero)
+   -------------------------------------------------------------------------- */
+
+.glass {
+  padding: 16px 18px;
+  border-radius: 22px;
+  background: #FFFFFFB8;
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  box-shadow: inset 0 0 0 1px #3E0F1926, var(--sombra-suave);
+  color: var(--vinho);
+}
+
+.glass__label {
+  display: block;
+  font-size: 11px;
+  line-height: 14px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--bordo);
+}
+
+.glass__number {
+  display: block;
+  font-weight: 800;
+  font-stretch: 75%;
+  font-size: 44px;
+  line-height: 44px;
+  margin-top: 4px;
+}
+
+.glass__text {
+  display: block;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 18px;
+  line-height: 20px;
+}
+
+/* --------------------------------------------------------------------------
+   Etiqueta adesivo inclinada
+   -------------------------------------------------------------------------- */
+
+.sticker {
+  display: inline-block;
+  padding: 10px 18px;
+  border-radius: 18px 18px 18px 4px;
+  background: var(--vinho);
+  color: var(--oliva);
+  font-weight: 800;
+  font-stretch: 75%;
+  font-size: 20px;
+  line-height: 22px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  rotate: -6deg;
+}
+
+/* --------------------------------------------------------------------------
+   Pílulas de ferramenta / marca
+   -------------------------------------------------------------------------- */
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  min-height: 48px;
+  padding: 0 22px;
+  border-radius: var(--r-pill);
+  font-weight: 800;
+  font-stretch: 75%;
+  font-size: 18px;
+  line-height: 20px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.pill--vinho { background: var(--vinho); color: var(--creme); }
+.pill--bordo { background: var(--bordo); color: var(--creme); }
+.pill--creme { background: var(--creme); color: var(--vinho); box-shadow: inset 0 0 0 1.5px var(--vinho); }
+.pill--branco { background: var(--branco); color: var(--vinho); box-shadow: inset 0 0 0 1.5px var(--vinho); }
+.pill--oliva { background: var(--oliva); color: var(--vinho); box-shadow: inset 0 0 0 1.5px var(--vinho); }
+
+/* --------------------------------------------------------------------------
+   Ícone em círculo
+   -------------------------------------------------------------------------- */
+
+.icon-circle {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: var(--r-pill);
+  flex: none;
+}
+
+.icon-circle svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* --------------------------------------------------------------------------
+   Mockup de navegador e celular (vitrine)
+   -------------------------------------------------------------------------- */
+
+.browser {
+  position: relative;
+  border-radius: 10px;
+  background: var(--creme-profundo);
+  box-shadow: 0 0 0 2px var(--vinho), 6px 6px 0 var(--vinho);
+  overflow: hidden;
+}
+
+.browser__bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 26px;
+  padding: 0 10px;
+  background: var(--vinho);
+}
+
+.browser__bar i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--oliva);
+}
+
+.browser__bar i:nth-child(2) { background: var(--creme); }
+.browser__bar i:nth-child(3) { background: var(--bordo); }
+
+.browser__url {
+  margin-left: 8px;
+  padding: 0 10px;
+  height: 16px;
+  flex: 1;
+  border-radius: 6px;
+  background: var(--bordo-escuro);
+  color: var(--creme);
+  font-size: 10px;
+  line-height: 16px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.browser__screen {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 16 / 10;
+  padding: 16px;
+  text-align: center;
+}
+
+.browser__screen--img {
+  padding: 0;
+  overflow: hidden;
+}
+
+.browser__screen img,
+.phone__screen img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  transition: transform 0.8s var(--ease-out);
+}
+
+.browser__name {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 30px;
+  line-height: 32px;
+  color: var(--bordo);
+}
+
+.phone {
+  position: absolute;
+  width: 26%;
+  aspect-ratio: 9 / 18;
+  padding: 6px;
+  border-radius: 22px;
+  background: var(--vinho);
+  box-shadow: 5px 5px 0 var(--bordo);
+}
+
+.phone__screen {
+  position: relative;
+  display: grid;
+  place-items: center;
+  height: 100%;
+  border-radius: 16px;
+  background: var(--creme-profundo);
+  overflow: hidden;
+}
+
+.phone__screen::before {
+  z-index: 1;
+  content: "";
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  width: 30%;
+  height: 4px;
+  border-radius: 4px;
+  background: var(--vinho);
+  transform: translateX(-50%);
+}
+
+/* --------------------------------------------------------------------------
+   Acordeão (details nativo)
+   -------------------------------------------------------------------------- */
+
+.faq-item {
+  border-radius: 22px;
+  background: var(--creme);
+  color: var(--marrom);
+  transition: box-shadow 0.3s var(--ease-out), transform 0.3s var(--ease-out);
+}
+
+.faq-item + .faq-item {
+  margin-top: 12px;
+}
+
+.faq-item[open] {
+  box-shadow: 6px 6px 0 var(--oliva);
+}
+
+.faq-item summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 72px;
+  padding: 16px 20px 16px 24px;
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 700;
+  cursor: pointer;
+  list-style: none;
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item[open] summary {
+  color: var(--bordo);
+}
+
+.faq-icon {
+  position: relative;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--r-pill);
+  background: var(--vinho);
+  flex: none;
+  transition: background-color 0.25s ease;
+}
+
+.faq-icon::before,
+.faq-icon::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 14px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--oliva);
+  transform: translate(-50%, -50%);
+  transition: transform 0.3s var(--ease-out);
+}
+
+.faq-icon::after {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.faq-item[open] .faq-icon {
+  background: var(--bordo);
+}
+
+.faq-item[open] .faq-icon::after {
+  transform: translate(-50%, -50%) rotate(0deg);
+}
+
+.faq-answer {
+  padding: 0 24px 24px;
+  color: var(--marrom);
+  font-size: 16px;
+  line-height: 26px;
+}
+
+.faq-answer p + p {
+  margin-top: 12px;
+}
+
+@media (min-width: 900px) {
+  .faq-item summary {
+    padding: 18px 22px 18px 28px;
+    font-size: 19px;
+  }
+
+  .faq-answer {
+    padding: 0 72px 26px 28px;
+    font-size: 17px;
+    line-height: 28px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Botão fixo: voltar ao topo
+   -------------------------------------------------------------------------- */
+
+.to-top {
+  position: fixed;
+  right: 16px;
+  bottom: 92px;
+  z-index: 85;
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: var(--r-pill);
+  background: var(--oliva);
+  color: var(--vinho);
+  box-shadow: 0 0 0 2px var(--vinho), var(--sombra-dura-sm);
+  opacity: 0;
+  visibility: hidden;
+  translate: 0 16px;
+  transition: opacity 0.3s ease, translate 0.4s var(--ease-out), visibility 0s linear 0.3s, background-color 0.2s ease;
+}
+
+.to-top.is-visible {
+  opacity: 1;
+  visibility: visible;
+  translate: 0 0;
+  transition: opacity 0.3s ease, translate 0.4s var(--ease-out), background-color 0.2s ease;
+}
+
+.to-top svg {
+  width: 22px;
+  height: 22px;
+  transition: translate 0.3s var(--ease-out);
+}
+
+.to-top:hover {
+  background: var(--oliva-hover);
+}
+
+.to-top:hover svg {
+  translate: 0 -3px;
+}
+
+.menu-open .to-top {
+  opacity: 0;
+  visibility: hidden;
+}
+
+@media (min-width: 900px) {
+  .to-top {
+    right: 28px;
+    bottom: 28px;
+    width: 56px;
+    height: 56px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Links "ver mais" que levam às páginas internas
+   -------------------------------------------------------------------------- */
+
+.section-more {
+  margin-top: 28px;
+}
+
+.section-more .link-arrow {
+  color: var(--vinho);
+}
+
+.section-more--dark .link-arrow,
+.faq__more {
+  color: var(--oliva);
+}
+
+/* --------------------------------------------------------------------------
+   Animação leve ao passar o mouse nos cartões
+   (usa translate/rotate individuais para não brigar com o GSAP)
+   -------------------------------------------------------------------------- */
+
+.bento__card,
+.plan-card,
+.case,
+.price-card,
+.testimonial,
+.track,
+.page-card {
+  transition: translate 0.45s var(--ease-out), rotate 0.45s var(--ease-out), box-shadow 0.45s var(--ease-out);
+}
+
+@media (hover: hover) {
+  .bento__card:hover,
+  .case:hover,
+  .testimonial:hover,
+  .page-card:hover {
+    translate: 0 -6px;
+    rotate: -0.8deg;
+  }
+
+  .bento__card--client:hover,
+  .bento__card--search:hover,
+  .case--oliva:hover,
+  .testimonial:nth-child(2):hover {
+    rotate: 0.8deg;
+  }
+
+  .bento__card--client:hover,
+  .bento__card--search:hover,
+  .case--oliva:hover,
+  .testimonial:hover {
+    box-shadow: 0 0 0 2px var(--vinho), var(--sombra-dura);
+  }
+
+  .bento__card--measure:hover,
+  .case--branco:hover {
+    box-shadow: 0 0 0 2px var(--vinho), 10px 10px 0 var(--vinho);
+  }
+
+  .case--bordo:hover,
+  .bento__card--person:hover,
+  .testimonial:nth-child(2):hover {
+    box-shadow: 8px 8px 0 var(--oliva);
+  }
+
+  .plan-card:hover,
+  .track:hover {
+    translate: 0 -6px;
+    box-shadow: inset 0 0 0 1px var(--linha-clara), 8px 8px 0 var(--oliva);
+  }
+
+  .price-card:hover {
+    translate: 0 -6px;
+    rotate: 0deg;
+  }
+
+  .project:hover .browser__screen img,
+  .page-project:hover .browser__screen img {
+    transform: scale(1.04);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Sem palavra sozinha na última linha (reforçado por no-widows.js)
+   -------------------------------------------------------------------------- */
+
+p,
+li,
+dd,
+blockquote,
+summary,
+figcaption {
+  text-wrap: pretty;
+}

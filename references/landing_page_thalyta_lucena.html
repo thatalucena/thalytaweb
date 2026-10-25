@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thalyta Lucena | Tráfego Pago & Landing Pages de Alta Conversão</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Instrument+Serif:ital@1&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        wine: {
+                            950: '#3E0F19', // Institutional deep canvas
+                            700: '#7B2132', // Process & highlights
+                        },
+                        cream: {
+                            100: '#F6EFE2', // Primary reading background
+                        },
+                        beige: {
+                            200: '#EDE3D0', // Soft cards / bento
+                        },
+                        sage: {
+                            100: '#E4E6D0', // Directional background
+                            400: '#B8C29A', // Primary accent / CTAs / badges
+                        },
+                        ink: '#3A2F2A'
+                    },
+                    fontFamily: {
+                        display: ['Anton', 'sans-serif'],
+                        editorial: ['Instrument Serif', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    borderRadius: {
+                        '4xl': '32px',
+                        '3xl': '24px',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom Styles & Utilities */
+        :root {
+            --color-wine-950: #3E0F19;
+            --color-wine-700: #7B2132;
+            --color-cream-100: #F6EFE2;
+            --color-beige-200: #EDE3D0;
+            --color-sage-400: #B8C29A;
+            --color-sage-100: #E4E6D0;
+        }
+
+        body {
+            background-color: var(--color-wine-950);
+            color: #FFFFFF;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Glassmorphism Cards */
+        .glass-card {
+            background: rgba(246, 239, 226, 0.12);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(246, 239, 226, 0.2);
+            box-shadow: 0 18px 44px rgba(0, 0, 0, 0.25);
+        }
+
+        .glass-card-light {
+            background: rgba(255, 255, 255, 0.65);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(62, 15, 25, 0.15);
+            box-shadow: 0 18px 44px rgba(62, 15, 25, 0.08);
+        }
+
+        /* Continuous Rotating Animation for Seal */
+        @keyframes spin-slow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .animate-spin-slow {
+            animation: spin-slow 20s linear infinite;
+        }
+
+        /* Marquee Ticker */
+        @keyframes marquee {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-marquee {
+            display: flex;
+            width: 200%;
+            animation: marquee 25s linear infinite;
+        }
+        .animate-marquee:hover {
+            animation-play-state: paused;
+        }
+
+        /* Interactive Card Elevate */
+        .hover-lift {
+            transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
+        }
+        .hover-lift:hover {
+            transform: translateY(-4px) scale(1.01);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #3E0F19;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #B8C29A;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="p-2 sm:p-3 md:p-4 selection:bg-sage-400 selection:text-wine-950">
+
+    <!-- NAVIGATION HEADER (FIXED PULL DOWN) -->
+    <header class="fixed top-2 sm:top-4 left-0 right-0 z-50 px-3 sm:px-6 max-w-7xl mx-auto">
+        <nav class="bg-wine-950/90 backdrop-blur-md border border-cream-100/20 rounded-full px-4 sm:px-6 py-3 flex items-center justify-between shadow-2xl">
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center gap-2 group">
+                <span class="font-display text-xl sm:text-2xl tracking-wider text-white uppercase group-hover:text-sage-400 transition-colors">
+                    THALYTA LUCENA
+                </span>
+                <span class="hidden sm:inline-block bg-sage-400 text-wine-950 font-display text-xs px-2.5 py-1 rounded-full uppercase tracking-wider transform -rotate-3 group-hover:rotate-0 transition-transform">
+                    TRÁFEGO & SITES
+                </span>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <div class="hidden md:flex items-center gap-6 text-xs lg:text-sm font-semibold tracking-wide uppercase text-cream-100/80">
+                <a href="#servicos" class="hover:text-sage-400 transition-colors">Serviços</a>
+                <a href="#diferenciais" class="hover:text-sage-400 transition-colors">Diferenciais</a>
+                <a href="#portfolio" class="hover:text-sage-400 transition-colors">Portfólio</a>
+                <a href="#resultados" class="hover:text-sage-400 transition-colors">Resultados</a>
+                <a href="#faq" class="hover:text-sage-400 transition-colors">FAQ</a>
+            </div>
+
+            <!-- CTA Button Nav -->
+            <div class="flex items-center gap-3">
+                <a href="https://wa.me/5500000000000?text=Ol%C3%A1%20Thalyta,%20quero%20um%20diagn%C3%B3stico%20de%20vendas%20para%20meu%20neg%C3%B3cio!" target="_blank" class="bg-sage-400 hover:bg-cream-100 text-wine-950 font-bold text-xs sm:text-sm px-4 sm:px-5 py-2.5 rounded-full flex items-center gap-2 transition-all shadow-md group">
+                    <span>Falar no WhatsApp</span>
+                    <span class="w-5 h-5 rounded-full bg-wine-950 text-sage-400 flex items-center justify-center text-xs group-hover:bg-wine-700 transition-colors">↗</span>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- MAIN WRAPPER CONTAINER WITH LOUDLY FRAME MARGINS -->
+    <main class="space-y-3 sm:space-y-4 pt-16 sm:pt-20">
+
+        <!-- S02: HERO SECTION -->
+        <section class="bg-wine-950 text-cream-100 rounded-4xl p-6 sm:p-10 lg:p-16 relative overflow-hidden border border-cream-100/10 min-h-[85vh] flex flex-col justify-between">
+            <!-- Decorative Subtle Grid Background -->
+            <div class="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none"></div>
+
+            <div class="grid lg:grid-cols-12 gap-10 lg:gap-8 items-center relative z-10 my-auto py-6">
+                <!-- Left Column: Copy & Actions -->
+                <div class="lg:col-span-7 space-y-6 sm:space-y-8 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 bg-cream-100/10 border border-cream-100/20 px-4 py-1.5 rounded-full text-xs sm:text-sm font-semibold tracking-wider text-sage-400 uppercase">
+                        <span class="w-2 h-2 rounded-full bg-sage-400 animate-pulse"></span>
+                        Estratégia Digital de Alto Impacto
+                    </div>
+
+                    <!-- Display Mixed Heading -->
+                    <h1 class="font-display text-4xl sm:text-6xl md:text-7xl lg:text-7xl leading-[0.92] uppercase tracking-tight">
+                        SEU SITE E SEUS ANÚNCIOS TRABALHANDO 
+                        <span class="font-editorial lowercase text-sage-400 font-normal px-2 block sm:inline">juntos</span> 
+                        PARA TRAZER CLIENTES.
+                    </h1>
+
+                    <p class="text-base sm:text-lg text-cream-100/80 max-w-xl mx-auto lg:mx-0 font-normal leading-relaxed">
+                        Elimine o desperdício com tráfego pago sem conversão. Unimos design autoral de alta resposta, cópia persuasiva e campanhas otimizadas para escalar o faturamento da sua empresa.
+                    </p>
+
+                    <!-- CTAs Row -->
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+                        <a href="https://wa.me/5500000000000?text=Ol%C3%A1%20Thalyta,%20quero%20vender%20mais!" target="_blank" class="w-full sm:w-auto bg-sage-400 hover:bg-cream-100 text-wine-950 font-bold px-8 py-4 rounded-full text-base flex items-center justify-center gap-3 transition-all transform hover:-translate-y-1 shadow-lg group">
+                            <span>Quero Vender Mais</span>
+                            <span class="w-7 h-7 rounded-full bg-wine-950 text-sage-400 flex items-center justify-center text-sm group-hover:bg-wine-700 transition-colors">↗</span>
+                        </a>
+
+                        <a href="#portfolio" class="w-full sm:w-auto border border-cream-100/40 hover:border-cream-100 text-cream-100 font-semibold px-7 py-4 rounded-full text-base flex items-center justify-center gap-2 transition-all hover:bg-cream-100/10">
+                            <span>Ver Projetos</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Column: Arch & Floating Social Proof Cards -->
+                <div class="lg:col-span-5 relative flex justify-center items-center mt-6 lg:mt-0">
+                    <!-- Architectural Arch Shape -->
+                    <div class="w-72 sm:w-80 md:w-96 h-[400px] sm:h-[460px] bg-sage-400 rounded-t-full p-3 flex flex-col justify-end relative shadow-2xl transform rotate-1">
+                        <div class="w-full h-full bg-cream-100 rounded-t-full p-6 flex flex-col items-center justify-between text-wine-950 text-center relative overflow-hidden">
+                            
+                            <!-- Inner Arch Decorative Brand Badge -->
+                            <div class="mt-8 pt-4">
+                                <span class="font-display text-2xl tracking-widest uppercase block text-wine-950">THALYTA</span>
+                                <span class="font-editorial text-sm italic text-wine-700 block">Estratégia & Performance</span>
+                            </div>
+
+                            <div class="my-auto space-y-2">
+                                <span class="font-display text-5xl text-wine-700 block">36X</span>
+                                <p class="text-xs font-bold uppercase tracking-wider text-wine-950">Retorno Máximo de Anúncios</p>
+                            </div>
+
+                            <!-- Bottom Arch Badge -->
+                            <div class="bg-wine-950 text-cream-100 text-xs font-semibold px-4 py-2 rounded-full mb-2">
+                                Método C.A.R.C. Ativo
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Rotating Circular Seal Overlay -->
+                    <div class="absolute -top-6 -right-2 sm:right-4 z-20">
+                        <div class="relative w-28 h-28 sm:w-36 sm:h-36 flex items-center justify-center">
+                            <!-- Rotating Text Ring -->
+                            <svg class="w-full h-full animate-spin-slow" viewBox="0 0 100 100">
+                                <path id="textPath" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" fill="none"></path>
+                                <text class="text-[9.5px] font-bold uppercase fill-sage-400 tracking-widest">
+                                    <textPath href="#textPath">
+                                        • THALYTA LUCENA • TRÁFEGO PAGO • SITES
+                                    </textPath>
+                                </text>
+                            </svg>
+                            <!-- Center Star Icon -->
+                            <div class="absolute w-12 h-12 sm:w-16 sm:h-16 bg-wine-700 rounded-full border-2 border-sage-400 flex items-center justify-center shadow-lg transform -rotate-12">
+                                <span class="text-sage-400 text-xl sm:text-2xl">✦</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Floating Glassmorphism Proof Card 1 (Top Left) -->
+                    <div class="absolute -left-2 sm:-left-6 top-1/4 glass-card p-4 rounded-2xl max-w-[200px] transform -rotate-6 shadow-xl hidden sm:block hover-lift z-20">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-sage-400 text-wine-950 font-bold flex items-center justify-center font-display text-lg">
+                                L
+                            </div>
+                            <div>
+                                <h4 class="text-xs font-bold text-white">@lukmob</h4>
+                                <p class="text-[10px] text-sage-400 font-semibold">36X ROAS obtido</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Floating Glassmorphism Proof Card 2 (Bottom Right) -->
+                    <div class="absolute -right-2 sm:-right-4 bottom-10 glass-card p-4 rounded-2xl max-w-[220px] transform rotate-3 shadow-xl hidden sm:block hover-lift z-20">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-cream-100 text-wine-950 font-bold flex items-center justify-center font-display text-lg">
+                                C
+                            </div>
+                            <div>
+                                <h4 class="text-xs font-bold text-white">Clínica Longéva</h4>
+                                <p class="text-[10px] text-sage-400 font-semibold">+360% Leads em 30d</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scroll Indicator -->
+            <div class="flex justify-center pt-6 border-t border-cream-100/10">
+                <a href="#credibilidade" class="text-xs text-cream-100/60 uppercase tracking-widest flex items-center gap-2 hover:text-sage-400 transition-colors">
+                    <span>Role para explorar</span>
+                    <span class="text-sage-400 text-sm">↓</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- S03: CREDIBILITY MARQUEE RAIL -->
+        <section id="credibilidade" class="bg-sage-400 text-wine-950 py-4 rounded-3xl overflow-hidden shadow-lg border border-sage-400">
+            <div class="animate-marquee whitespace-nowrap flex items-center gap-8 font-display text-lg sm:text-2xl uppercase tracking-wider">
+                <span>+150 CLIENTES ATENDIDOS</span> <span class="text-wine-700">✦</span>
+                <span>+R$ 20 MILHÕES EM FATURAMENTO GERADO</span> <span class="text-wine-700">✦</span>
+                <span>5 ANOS DE ATUAÇÃO</span> <span class="text-wine-700">✦</span>
+                <span>MÉTODO C.A.R.C.</span> <span class="text-wine-700">✦</span>
+                <span>ATENDIMENTO EM TODO O BRASIL & EXTERIOR</span> <span class="text-wine-700">✦</span>
+                <!-- Repeat for smooth loop -->
+                <span>+150 CLIENTES ATENDIDOS</span> <span class="text-wine-700">✦</span>
+                <span>+R$ 20 MILHÕES EM FATURAMENTO GERADO</span> <span class="text-wine-700">✦</span>
+                <span>5 ANOS DE ATUAÇÃO</span> <span class="text-wine-700">✦</span>
+                <span>MÉTODO C.A.R.C.</span> <span class="text-wine-700">✦</span>
+                <span>ATENDIMENTO EM TODO O BRASIL & EXTERIOR</span> <span class="text-wine-700">✦</span>
+            </div>
+        </section>
+
+        <!-- S04: PAIN POINTS & DIAGNOSIS -->
+        <section class="bg-cream-100 text-wine-950 rounded-4xl p-6 sm:p-12 lg:p-16 shadow-xl">
+            <div class="max-w-7xl mx-auto space-y-10">
+                <!-- Section Header -->
+                <div class="grid lg:grid-cols-12 gap-8 items-start">
+                    <div class="lg:col-span-6 space-y-4">
+                        <span class="inline-block bg-wine-950 text-cream-100 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest">
+                            Diagnóstico de Conversão
+                        </span>
+                        <h2 class="font-display text-3xl sm:text-5xl lg:text-6xl uppercase leading-[0.95] text-wine-950">
+                            SE VOCÊ JÁ INVESTIU E NÃO VIU 
+                            <span class="font-editorial lowercase text-wine-700 font-normal px-1">retorno</span>, 
+                            A CONVERSA COMEÇA AQUI.
+                        </h2>
+                    </div>
+                    <div class="lg:col-span-6 lg:pt-8 text-wine-950/80 font-normal text-base sm:text-lg leading-relaxed">
+                        A maioria das empresas não falha por falta de investimento em anúncios, mas sim pela ruído entre o clique e a página. Investir em tráfego sem uma landing page estrategicamente desenhada é rasgar orçamento diário.
+                    </div>
+                </div>
+
+                <!-- Pain Points List Grid -->
+                <div class="grid md:grid-cols-2 gap-4 sm:gap-6 pt-4">
+                    <!-- Pain Item 1 -->
+                    <div class="bg-beige-200/60 p-6 sm:p-8 rounded-3xl border border-wine-950/10 flex items-start gap-4 hover-lift">
+                        <div class="w-10 h-10 rounded-full bg-wine-700 text-cream-100 flex items-center justify-center font-bold text-lg shrink-0">
+                            ✕
+                        </div>
+                        <div class="space-y-2">
+                            <h3 class="font-display text-xl uppercase text-wine-950">Páginas Genéricas sem Autoridade</h3>
+                            <p class="text-sm text-wine-950/75 leading-relaxed">
+                                SITES lentos, cheios de menus e distrações que fazem seu potencial cliente fechar a aba antes mesmo de entender sua proposta.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Pain Item 2 -->
+                    <div class="bg-beige-200/60 p-6 sm:p-8 rounded-3xl border border-wine-950/10 flex items-start gap-4 hover-lift">
+                        <div class="w-10 h-10 rounded-full bg-wine-700 text-cream-100 flex items-center justify-center font-bold text-lg shrink-0">
+                            ✕
+                        </div>
+                        <div class="space-y-2">
+                            <h3 class="font-display text-xl uppercase text-wine-950">Anúncios Atraindo Curiosos</h3>
+                            <p class="text-sm text-wine-950/75 leading-relaxed">
+                                Campanhas mal segmentadas que geram cliques baratos e mensagens no WhatsApp de pessoas que nunca vão comprar de você.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Pain Item 3 -->
+                    <div class="bg-beige-200/60 p-6 sm:p-8 rounded-3xl border border-wine-950/10 flex items-start gap-4 hover-lift">
+                        <div class="w-10 h-10 rounded-full bg-wine-700 text-cream-100 flex items-center justify-center font-bold text-lg shrink-0">
+                            ✕
+                        </div>
+                        <div class="space-y-2">
+                            <h3 class="font-display text-xl uppercase text-wine-950">Falta de Rastreamento & Métricas</h3>
+                            <p class="text-sm text-wine-950/75 leading-relaxed">
+                                Investir no escuro sem saber exatamente qual anúncio gerou a venda ou em qual etapa o lead abandonou seu funil.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Pain Item 4 -->
+                    <div class="bg-beige-200/60 p-6 sm:p-8 rounded-3xl border border-wine-950/10 flex items-start gap-4 hover-lift">
+                        <div class="w-10 h-10 rounded-full bg-wine-700 text-cream-100 flex items-center justify-center font-bold text-lg shrink-0">
+                            ✕
+                        </div>
+                        <div class="space-y-2">
+                            <h3 class="font-display text-xl uppercase text-wine-950">Desconexão Oferta x Destino</h3>
+                            <p class="text-sm text-wine-950/75 leading-relaxed">
+                                A promessa do anúncio não bate exatamente com o texto da página, gerando desconfiança imediata no visitante.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- S05: INTEGRATED PLAN / METHOD (3 STEPS) -->
+        <section class="bg-wine-700 text-cream-100 rounded-4xl p-6 sm:p-12 lg:p-16 shadow-xl">
+            <div class="max-w-7xl mx-auto space-y-12">
+                <!-- Section Title -->
+                <div class="text-center max-w-3xl mx-auto space-y-4">
+                    <span class="bg-sage-400 text-wine-950 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest">
+                        O Método C.A.R.C.
+                    </span>
+                    <h2 class="font-display text-3xl sm:text-5xl uppercase leading-[0.95]">
+                        UM PLANO SÓ PARA O SITE E PARA OS 
+                        <span class="font-editorial lowercase text-sage-400 font-normal px-2">anúncios.</span>
+                    </h2>
+                    <p class="text-cream-100/80 text-sm sm:text-base">
+                        Integração total entre a inteligência do tráfego pago e a arquitetura da sua landing page.
+                    </p>
+                </div>
+
+                <!-- 3 Steps Cards Grid -->
+                <div class="grid md:grid-cols-3 gap-6 relative">
+                    <!-- Step 1 -->
+                    <div class="bg-wine-950/80 p-8 rounded-3xl border border-cream-100/15 space-y-6 flex flex-col justify-between hover-lift">
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between">
+                                <span class="w-12 h-12 rounded-2xl bg-sage-400 text-wine-950 font-display text-2xl flex items-center justify-center">
+                                    01
+                                </span>
+                                <span class="text-xs font-bold text-sage-400 bg-sage-400/10 border border-sage-400/20 px-3 py-1 rounded-full">
+                                    Etapa 1
+                                </span>
+                            </div>
+                            <h3 class="font-display text-2xl uppercase tracking-wide">PLANEJAMENTO & COPY</h3>
+                            <p class="text-xs sm:text-sm text-cream-100/75 leading-relaxed">
+                                Pesquisa profunda de público, mapeamento de dores e criação do roteiro persuasivo exclusivo focado no seu produto ou serviço.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-cream-100/10 text-xs text-sage-400 font-semibold">
+                            ✦ Definição de Posicionamento
+                        </div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="bg-wine-950/80 p-8 rounded-3xl border border-cream-100/15 space-y-6 flex flex-col justify-between hover-lift">
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between">
+                                <span class="w-12 h-12 rounded-2xl bg-sage-400 text-wine-950 font-display text-2xl flex items-center justify-center">
+                                    02
+                                </span>
+                                <span class="text-xs font-bold text-sage-400 bg-sage-400/10 border border-sage-400/20 px-3 py-1 rounded-full">
+                                    Etapa 2
+                                </span>
+                            </div>
+                            <h3 class="font-display text-2xl uppercase tracking-wide">CONSTRUÇÃO HIGH-CONVERT</h3>
+                            <p class="text-xs sm:text-sm text-cream-100/75 leading-relaxed">
+                                Design de impacto autoral com carregamento ultra-rápido, responsivo para mobile e tags de rastreamento (GA4 e Pixel) configuradas.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-cream-100/10 text-xs text-sage-400 font-semibold">
+                            ✦ Velocidade & Rastreamento
+                        </div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="bg-wine-950/80 p-8 rounded-3xl border border-cream-100/15 space-y-6 flex flex-col justify-between hover-lift">
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between">
+                                <span class="w-12 h-12 rounded-2xl bg-sage-400 text-wine-950 font-display text-2xl flex items-center justify-center">
+                                    03
+                                </span>
+                                <span class="text-xs font-bold text-sage-400 bg-sage-400/10 border border-sage-400/20 px-3 py-1 rounded-full">
+                                    Etapa 3
+                                </span>
+                            </div>
+                            <h3 class="font-display text-2xl uppercase tracking-wide">ANÚNCIOS & OTIMIZAÇÃO</h3>
+                            <p class="text-xs sm:text-sm text-cream-100/75 leading-relaxed">
+                                Lançamento de campanhas segmentadas em Meta Ads e Google Ads com testes contínuos de A/B para escalar o ROI.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-cream-100/10 text-xs text-sage-400 font-semibold">
+                            ✦ Escala de Tráfego Pago
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- S06: STRATEGIC DIFFERENTIAL (BENTO GRID: HUMAN + AI) -->
+        <section id="diferenciais" class="bg-cream-100 text-wine-950 rounded-4xl p-6 sm:p-12 lg:p-16 shadow-xl">
+            <div class="max-w-7xl mx-auto space-y-10">
+                <!-- Section Header -->
+                <div class="space-y-4 text-center max-w-3xl mx-auto">
+                    <span class="bg-wine-950 text-cream-100 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest">
+                        Estratégia x Automação
+                    </span>
+                    <h2 class="font-display text-3xl sm:text-5xl uppercase leading-[0.95]">
+                        QUALQUER UM GERA UMA PÁGINA COM IA. ESTRATÉGIA ELA NÃO 
+                        <span class="font-editorial lowercase text-wine-700 font-normal px-2">gera.</span>
+                    </h2>
+                </div>
+
+                <!-- Bento Grid Layout -->
+                <div class="grid md:grid-cols-12 gap-4 sm:gap-6 pt-4">
+                    <!-- Bento 1: Beige Card Top Left -->
+                    <div class="md:col-span-6 lg:col-span-7 bg-beige-200 p-8 rounded-3xl border border-wine-950/10 space-y-4 hover-lift flex flex-col justify-between">
+                        <div class="space-y-3">
+                            <div class="w-10 h-10 rounded-full bg-wine-950 text-sage-400 flex items-center justify-center font-bold">
+                                👤
+                            </div>
+                            <h3 class="font-display text-2xl uppercase text-wine-950">EU CONHEÇO O SEU CLIENTE</h3>
+                            <p class="text-sm text-wine-950/75 leading-relaxed">
+                                A Inteligência Artificial repete clichês. A análise humana identifica os gatilhos emocionais específicos e os medos reais que fazem seu cliente decidir comprar de você.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-wine-950/10 text-xs font-bold text-wine-700 uppercase tracking-wider">
+                            ✦ Pesquisa Comportamental Aprofundada
+                        </div>
+                    </div>
+
+                    <!-- Bento 2: Sage Card Central -->
+                    <div class="md:col-span-6 lg:col-span-5 bg-sage-400 p-8 rounded-3xl border border-wine-950/10 space-y-4 hover-lift flex flex-col justify-between">
+                        <div class="space-y-3">
+                            <div class="w-10 h-10 rounded-full bg-wine-950 text-sage-400 flex items-center justify-center font-bold">
+                                🎯
+                            </div>
+                            <h3 class="font-display text-2xl uppercase text-wine-950">ALINHADO COM OS ALGORITMOS</h3>
+                            <p class="text-sm text-wine-950/85 leading-relaxed">
+                                Otimização de pontuação de qualidade no Google Ads e relevância de leilão no Meta Ads, reduzindo o custo por clique (CPC).
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-wine-950/20 text-xs font-bold text-wine-950 uppercase tracking-wider">
+                            ✦ Maior Eficiência Monetária
+                        </div>
+                    </div>
+
+                    <!-- Bento 3: White Card Bottom Left -->
+                    <div class="md:col-span-6 lg:col-span-5 bg-white p-8 rounded-3xl border border-wine-950/15 space-y-4 hover-lift flex flex-col justify-between shadow-sm">
+                        <div class="space-y-3">
+                            <div class="w-10 h-10 rounded-full bg-wine-700 text-cream-100 flex items-center justify-center font-bold">
+                                📊
+                            </div>
+                            <h3 class="font-display text-2xl uppercase text-wine-950">CADA CLIQUE É MEDIDO</h3>
+                            <p class="text-sm text-wine-950/75 leading-relaxed">
+                                Implementação avançada de Google Analytics 4, Pixel Meta, API de Conversão e mapas de calor para tomada de decisão baseada em dados reais.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-wine-950/10 text-xs font-bold text-wine-700 uppercase tracking-wider">
+                            ✦ Rastreamento Ponta a Ponta
+                        </div>
+                    </div>
+
+                    <!-- Bento 4: Tall Card Right Accent -->
+                    <div class="md:col-span-6 lg:col-span-7 bg-wine-950 text-cream-100 p-8 rounded-3xl border border-cream-100/10 space-y-4 hover-lift flex flex-col justify-between relative overflow-hidden">
+                        <div class="space-y-3 z-10">
+                            <span class="bg-sage-400 text-wine-950 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                                Atendimento Direto
+                            </span>
+                            <h3 class="font-display text-2xl sm:text-3xl uppercase text-white">TEM UMA PESSOA RESPONSÁVEL</h3>
+                            <p class="text-sm text-cream-100/80 leading-relaxed max-w-md">
+                                Você não fala com robôs ou estagiários em rotação. A gestão da sua estratégia e criação é liderada diretamente por Thalyta Lucena.
+                            </p>
+                        </div>
+                        <div class="bg-wine-700 -mx-8 -mb-8 p-4 px-8 text-xs font-bold text-sage-400 uppercase tracking-wider border-t border-cream-100/10 z-10">
+                            ✦ Acompanhamento Próximo & Ajustes Rápidos
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- S07: SERVICES OFFERED -->
+        <section id="servicos" class="bg-wine-950 text-cream-100 rounded-4xl p-6 sm:p-12 lg:p-16 border border-cream-100/10 shadow-xl">
+            <div class="max-w-7xl mx-auto space-y-10">
+                <!-- Header -->
+                <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-cream-100/15 pb-8">
+                    <div class="space-y-3">
+                        <span class="bg-sage-400 text-wine-950 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest">
+                            Soluções
+                        </span>
+                        <h2 class="font-display text-4xl sm:text-6xl uppercase leading-[0.95]">
+                            O QUE EU <span class="font-editorial lowercase text-sage-400 font-normal px-2">entrego</span>
+                        </h2>
+                    </div>
+                    <a href="https://wa.me/5500000000000?text=Ol%C3%A1%20Thalyta,%20quero%20saber%20mais%20sobre%20os%20servi%C3%A7os" target="_blank" class="inline-flex items-center gap-3 bg-cream-100/10 border border-cream-100/20 hover:bg-cream-100 hover:text-wine-950 text-cream-100 font-bold px-6 py-3 rounded-full text-sm transition-all">
+                        <span>Ver Todos os Serviços</span>
+                        <span>↗</span>
+                    </a>
+                </div>
+
+                <!-- Services List Rows -->
+                <div class="space-y-4">
+                    <!-- Service Row 1 -->
+                    <div class="bg-wine-950/60 hover:bg-wine-700/40 border border-cream-100/15 p-6 sm:p-8 rounded-3xl transition-all duration-300 flex flex-col md:flex-row md:items-center justify-between gap-6 hover-lift group">
+                        <div class="space-y-2 md:max-w-xl">
+                            <div class="flex items-center gap-3">
+                                <span class="text-sage-400 font-mono font-bold text-sm">01</span>
+                                <span class="bg-sage-400/10 text-sage-400 text-xs font-bold px-2.5 py-0.5 rounded-full uppercase border border-sage-400/20">Mais Procurado</span>
+                            </div>
+                            <h3 class="font-display text-2xl sm:text-3xl uppercase tracking-wide group-hover:text-sage-400 transition-colors">
+                                LANDING PAGES DE ALTA CONVERSÃO
+                            </h3>
+                            <p class="text-xs sm:text-sm text-cream-100/70">
+                                Criação completa de páginas focadas em vendas ou geração de leads. Copywriting, design editorial exclusivo e desenvolvimento responsivo.
+                            </p>
+                        </div>
+                        <div>
+                            <a href="https://wa.me/5500000000000?text=Ol%C3%A1,%20tenho%20interesse%20em%20Landing%20Pages!" target="_blank" class="w-12 h-12 rounded-full bg-sage-400 text-wine-950 flex items-center justify-center font-bold text-lg group-hover:bg-cream-100 transition-colors">
+                                ↗
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Service Row 2 -->
+                    <div class="bg-wine-950/60 hover:bg-wine-700/40 border border-cream-100/15 p-6 sm:p-8 rounded-3xl transition-all duration-300 flex flex-col md:flex-row md:items-center justify-between gap-6 hover-lift group">
+                        <div class="space-y-2 md:max-w-xl">
+                            <div class="flex items-center gap-3">
+                                <span class="text-sage-400 font-mono font-bold text-sm">02</span>
+                                <span class="bg-sage-400/10 text-sage-400 text-xs font-bold px-2.5 py-0.5 rounded-full uppercase border border-sage-400/20">Gestão Contínua</span>
+                            </div>
+                            <h3 class="font-display text-2xl sm:text-3xl uppercase tracking-wide group-hover:text-sage-400 transition-colors">
+                                GESTÃO DE TRÁFEGO PAGO (META & GOOGLE)
+                            </h3>
+                            <p class="text-xs sm:text-sm text-cream-100/70">
+                                Criação, análise e otimização diária de campanhas de anúncios patrocinados no Instagram, Facebook e Google para atrair compradores qualificados.
+                            </p>
+                        </div>
+                        <div>
+                            <a href="https://wa.me/5500000000000?text=Ol%C3%A1,%20tenho%20interesse%20em%20Gest%C3%A3o%20de%20Tr%C3%A1fego!" target="_blank" class="w-12 h-12 rounded-full bg-sage-400 text-wine-950 flex items-center justify-center font-bold text-lg group-hover:bg-cream-100 transition-colors">
+                                ↗
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Service Row 3 -->
+                    <div class="bg-wine-950/60 hover:bg-wine-700/40 border border-cream-100/15 p-6 sm:p-8 rounded-3xl transition-all duration-300 flex flex-col md:flex-row md:items-center justify-between gap-6 hover-lift group">
+                        <div class="space-y-2 md:max-w-xl">
+                            <div class="flex items-center gap-3">
+                                <span class="text-sage-400 font-mono font-bold text-sm">03</span>
+                                <span class="bg-sage-400/10 text-sage-400 text-xs font-bold px-2.5 py-0.5 rounded-full uppercase border border-sage-400/20">Solução Completa</span>
+                            </div>
+                            <h3 class="font-display text-2xl sm:text-3xl uppercase tracking-wide group-hover:text-sage-400 transition-colors">
+                                COMBO ESTRATÉGICO: SITE + ANÚNCIOS
+                            </h3>
+                            <p class="text-xs sm:text-sm text-cream-100/70">
+                                A solução de ponta a ponta. Construímos o seu ecossistema digital completo e gerenciamos o tráfego para alimentar o funil diariamente.
+                            </p>
+                        </div>
+                        <div>
+                            <a href="https://wa.me/5500000000000?text=Ol%C3%A1,%20quero%20o%20Combo%20Estrat%C3%A9gico%20Site%2BAn%C3%BAncios!" target="_blank" class="w-12 h-12 rounded-full bg-sage-400 text-wine-950 flex items-center justify-center font-bold text-lg group-hover:bg-cream-100 transition-colors">
+                                ↗
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tech / Platform Chips Footer -->
+                <div class="pt-6 border-t border-cream-100/10 flex flex-wrap items-center justify-center gap-3 text-xs font-semibold uppercase text-cream-100/60">
+                    <span class="text-sage-400">Plataformas integradas:</span>
+                    <span class="bg-cream-100/10 px-3 py-1 rounded-full border border-cream-100/10">Meta Ads</span>
+                    <span class="bg-cream-100/10 px-3 py-1 rounded-full border border-cream-100/10">Google Ads</span>
+                    <span class="bg-cream-100/10 px-3 py-1 rounded-full border border-cream-100/10">GA4</span>
+                    <span class="bg-cream-100/10 px-3 py-1 rounded-full border border-cream-100/10">WordPress/Elementor</span>
+                    <span class="bg-cream-100/10 px-3 py-1 rounded-full border border-cream-100/10">Hubla / Hotmart</span>
+                    <span class="bg-cream-100/10 px-3 py-1 rounded-full border border-cream-100/10">API de Conversões</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- S08: CHOOSE YOUR PATH / DIRECTIONAL CARDS -->
+        <section class="bg-sage-100 text-wine-950 rounded-4xl p-6 sm:p-12 lg:p-16 shadow-xl">
+            <div class="max-w-7xl mx-auto space-y-10">
+                <div class="text-center max-w-2xl mx-auto space-y-3">
+                    <span class="bg-wine-950 text-cream-100 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest">
+                        Direcionador
+                    </span>
+                    <h2 class="font-display text-3xl sm:text-5xl uppercase leading-[0.95]">
+                        POR ONDE VOCÊ QUER <span class="font-editorial lowercase text-wine-700 font-normal px-1">começar?</span>
+                    </h2>
+                </div>
+
+                <!-- 3 Directional CTA Cards Grid -->
+                <div class="grid md:grid-cols-3 gap-6">
+                    <!-- Path Card 1: Deep Wine -->
+                    <a href="https://wa.me/5500000000000?text=Quero%20um%20Site%20Novo!" target="_blank" class="bg-wine-950 text-cream-100 p-8 rounded-3xl space-y-8 flex flex-col justify-between hover-lift group border border-wine-950">
+                        <div class="space-y-4">
+                            <span class="text-3xl">💻</span>
+                            <h3 class="font-display text-2xl sm:text-3xl uppercase leading-tight group-hover:text-sage-400 transition-colors">
+                                QUERO UM SITE NOVO
+                            </h3>
+                            <p class="text-xs sm:text-sm text-cream-100/75">
+                                Preciso de uma Landing Page ou site institucional profissional para apresentar meu negócio e converter visitantes.
+                            </p>
+                        </div>
+                        <div class="flex items-center justify-between pt-4 border-t border-cream-100/10 text-xs font-bold text-sage-400 uppercase">
+                            <span>Solicitar Proposta</span>
+                            <span class="w-8 h-8 rounded-full bg-sage-400 text-wine-950 flex items-center justify-center font-bold">↗</span>
+                        </div>
+                    </a>
+
+                    <!-- Path Card 2: Medium Wine -->
+                    <a href="https://wa.me/5500000000000?text=Quero%20Anunciar%20meu%20Neg%C3%B3cio!" target="_blank" class="bg-wine-700 text-cream-100 p-8 rounded-3xl space-y-8 flex flex-col justify-between hover-lift group border border-wine-700">
+                        <div class="space-y-4">
+                            <span class="text-3xl">🎯</span>
+                            <h3 class="font-display text-2xl sm:text-3xl uppercase leading-tight group-hover:text-sage-400 transition-colors">
+                                QUERO ANUNCIAR MEU NEGÓCIO
+                            </h3>
+                            <p class="text-xs sm:text-sm text-cream-100/80">
+                                Já tenho uma página e quero uma especialista em tráfego pago para rodar campanhas no Meta e Google Ads.
+                            </p>
+                        </div>
+                        <div class="flex items-center justify-between pt-4 border-t border-cream-100/10 text-xs font-bold text-sage-400 uppercase">
+                            <span>Falar com Thalyta</span>
+                            <span class="w-8 h-8 rounded-full bg-sage-400 text-wine-950 flex items-center justify-center font-bold">↗</span>
+                        </div>
+                    </a>
+
+                    <!-- Path Card 3: Sage Green -->
+                    <a href="https://wa.me/5500000000000?text=Quero%20os%20dois:%20Site%20%2B%20An%C3%BAncios!" target="_blank" class="bg-sage-400 text-wine-950 p-8 rounded-3xl space-y-8 flex flex-col justify-between hover-lift group border border-sage-400">
+                        <div class="space-y-4">
+                            <span class="text-3xl">✦</span>
+                            <h3 class="font-display text-2xl sm:text-3xl uppercase leading-tight text-wine-950 group-hover:text-wine-700 transition-colors">
+                                QUERO OS DOIS (COMPLETO)
+                            </h3>
+                            <p class="text-xs sm:text-sm text-wine-950/80 font-medium">
+                                Quero a solução estratégica completa: criação da Landing Page perfeita + gestão diária dos anúncios.
+                            </p>
+                        </div>
+                        <div class="flex items-center justify-between pt-4 border-t border-wine-950/20 text-xs font-bold text-wine-950 uppercase">
+                            <span>Ver Plano Integrado</span>
+                            <span class="w-8 h-8 rounded-full bg-wine-950 text-sage-400 flex items-center justify-center font-bold">↗</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- S09: PORTFOLIO / WORK SHOWCASE -->
+        <section id="portfolio" class="bg-cream-100 text-wine-950 rounded-4xl p-6 sm:p-12 lg:p-16 shadow-xl">
+            <div class="max-w-7xl mx-auto space-y-10">
+                <!-- Section Header -->
+                <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+                    <div class="space-y-3">
+                        <span class="bg-wine-950 text-cream-100 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest">
+                            Cases Selecionados
+                        </span>
+                        <h2 class="font-display text-3xl sm:text-5xl uppercase leading-[0.95]">
+                            SITES QUE JÁ <span class="font-editorial lowercase text-wine-700 font-normal px-1">entreguei.</span>
+                        </h2>
+                    </div>
+                </div>
+
+                <!-- Portfolio Mosaic Grid -->
+                <div class="grid md:grid-cols-12 gap-6">
+                    <!-- Project 1: Large Featured (LUK MOB) -->
+                    <div class="md:col-span-12 lg:col-span-7 bg-beige-200 p-6 sm:p-8 rounded-3xl border border-wine-950/10 space-y-6 hover-lift flex flex-col justify-between">
+                        <!-- Browser Preview Mockup -->
+                        <div class="bg-wine-950 rounded-2xl overflow-hidden shadow-lg border border-wine-950/20">
+                            <!-- Browser Top Bar -->
+                            <div class="bg-wine-950 px-4 py-3 flex items-center gap-2 border-b border-cream-100/10">
+                                <span class="w-3 h-3 rounded-full bg-red-400/80"></span>
+                                <span class="w-3 h-3 rounded-full bg-yellow-400/80"></span>
+                                <span class="w-3 h-3 rounded-full bg-green-400/80"></span>
+                                <span class="ml-4 text-[10px] text-cream-100/50 font-mono">lukmob.com.br</span>
+                            </div>
+                            <!-- Mockup Content Canvas -->
+                            <div class="p-6 bg-wine-950 text-cream-100 space-y-4">
+                                <span class="text-xs bg-sage-400 text-wine-950 font-bold px-2 py-0.5 rounded">Mobilidade Urbana</span>
+                                <h4 class="font-display text-2xl sm:text-3xl uppercase">LUK MOB · PLATAFORMA DE TRANSPORTE</h4>
+                                <div class="p-4 bg-cream-100/10 rounded-xl space-y-2">
+                                    <span class="font-display text-3xl text-sage-400 block">36X ROAS</span>
+                                    <p class="text-xs text-cream-100/70">Escala de tráfego pago aliada a landing page de alta captura de motoristas e passageiros.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <h3 class="font-display text-2xl uppercase">LUK MOB</h3>
+                                <p class="text-xs text-wine-950/70">Aplicativo & Transporte Regional</p>
+                            </div>
+                            <a href="https://wa.me/5500000000000?text=Quero%20um%20site%20parecido%20com%20o%20da%20LUK%20MOB" target="_blank" class="bg-wine-950 text-cream-100 hover:bg-wine-700 px-5 py-2.5 rounded-full text-xs font-bold transition-colors">
+                                Ver Projeto ↗
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Project 2: Clinica Longeva -->
+                    <div class="md:col-span-6 lg:col-span-5 bg-sage-100 p-6 sm:p-8 rounded-3xl border border-wine-950/10 space-y-6 hover-lift flex flex-col justify-between">
+                        <!-- Browser Preview Mockup -->
+                        <div class="bg-wine-950 rounded-2xl overflow-hidden shadow-lg border border-wine-950/20">
+                            <div class="bg-wine-950 px-4 py-2.5 flex items-center gap-2 border-b border-cream-100/10">
+                                <span class="w-2.5 h-2.5 rounded-full bg-cream-100/30"></span>
+                                <span class="w-2.5 h-2.5 rounded-full bg-cream-100/30"></span>
+                                <span class="w-2.5 h-2.5 rounded-full bg-cream-100/30"></span>
+                            </div>
+                            <div class="p-6 bg-cream-100 text-wine-950 space-y-3">
+                                <span class="text-xs bg-wine-700 text-cream-100 font-bold px-2 py-0.5 rounded">Saúde & Estética</span>
+                                <h4 class="font-display text-xl uppercase">CLÍNICA LONGEVA</h4>
+                                <div class="p-3 bg-sage-400/30 rounded-lg">
+                                    <span class="font-display text-xl text-wine-700 block">+360% LEADS</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <h3 class="font-display text-xl uppercase">CLÍNICA LONGEVA</h3>
+                                <p class="text-xs text-wine-950/70">Captação para Procedimentos</p>
+                            </div>
+                            <span class="text-wine-700 font-bold text-lg">↗</span>
+                        </div>
+                    </div>
+
+                    <!-- Project 3: Autoescola Nova Direção -->
+                    <div class="md:col-span-6 lg:col-span-6 bg-white p-6 sm:p-8 rounded-3xl border border-wine-950/10 space-y-6 hover-lift flex flex-col justify-between">
+                        <div class="bg-wine-950 rounded-2xl overflow-hidden shadow-lg border border-wine-950/20">
+                            <div class="bg-wine-950 px-4 py-2.5 flex items-center gap-2">
+                                <span class="w-2.5 h-2.5 rounded-full bg-cream-100/30"></span>
+                                <span class="w-2.5 h-2.5 rounded-full bg-cream-100/30"></span>
+                                <span class="w-2.5 h-2.5 rounded-full bg-cream-100/30"></span>
+                            </div>
+                            <div class="p-6 bg-beige-200 text-wine-950 space-y-3">
+                                <span class="text-xs bg-wine-950 text-cream-100 font-bold px-2 py-0.5 rounded">Educação</span>
+                                <h4 class="font-display text-xl uppercase">AUTOESCOLA NOVA DIREÇÃO</h4>
+                                <p class="text-xs text-wine-950/80">Matrículas online ativas e agenda cheia.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <h3 class="font-display text-xl uppercase">NOVA DIREÇÃO</h3>
+                                <p class="text-xs text-wine-950/70">Captação Local de Alunos</p>
+                            </div>
+                            <span class="text-wine-700 font-bold text-lg">↗</span>
+                        </div>
+                    </div>
+
+                    <!-- Project 4: Esmalteria da Jana -->
+                    <div class="md:col-span-12 lg:col-span-6 bg-beige-200 p-6 sm:p-8 rounded-3xl border border-wine-950/10 space-y-6 hover-lift flex flex-col justify-between">
+                        <div class="bg-wine-950 rounded-2xl overflow-hidden shadow-lg border border-wine-950/20">
+                            <div class="bg-wine-950 px-4 py-2.5 flex items-center gap-2">
+                                <span class="w-2.5 h-2.5 rounded-full bg-cream-100/30"></span>
+                                <span class="w-2.5 h-2.5 rounded-full bg-cream-100/30"></span>
+                                <span class="w-2.5 h-2.5 rounded-full bg-cream-100/30"></span>
+                            </div>
+                            <div class="p-6 bg-sage-400 text-wine-950 space-y-3">
+                                <span class="text-xs bg-wine-950 text-cream-100 font-bold px-2 py-0.5 rounded">Beleza & Serviços</span>
+                                <h4 class="font-display text-xl uppercase">ESMALTERIA DA JANA</h4>
+                                <p class="text-xs text-wine-950/80">Agendamento direto via WhatsApp.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <h3 class="font-display text-xl uppercase">ESMALTERIA DA JANA</h3>
+                                <p class="text-xs text-wine-950/70">Beleza & Agendamentos</p>
+                            </div>
+                            <span class="text-wine-700 font-bold text-lg">↗</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- S10: RESULTS & QUANTITATIVE PROOF (OVERSIZED KPIS) -->
+        <section id="resultados" class="bg-wine-950 text-cream-100 rounded-4xl p-6 sm:p-12 lg:p-16 border border-cream-100/10 shadow-xl">
+            <div class="max-w-7xl mx-auto space-y-12">
+                <!-- Section Title -->
+                <div class="text-center max-w-2xl mx-auto space-y-3">
+                    <span class="bg-sage-400 text-wine-950 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest">
+                        Métricas Comprovadas
+                    </span>
+                    <h2 class="font-display text-3xl sm:text-5xl uppercase leading-[0.95]">
+                        RESULTADOS QUE EU CONSIGO TE <span class="font-editorial lowercase text-sage-400 font-normal px-2">mostrar.</span>
+                    </h2>
+                </div>
+
+                <!-- KPI Bento Display -->
+                <div class="grid md:grid-cols-12 gap-6">
+                    <!-- Giant KPI Card Left -->
+                    <div class="md:col-span-12 lg:col-span-7 bg-wine-700 p-8 sm:p-12 rounded-3xl border border-cream-100/15 flex flex-col justify-between space-y-8 hover-lift">
+                        <div class="space-y-4">
+                            <span class="bg-sage-400 text-wine-950 text-xs font-bold px-3 py-1 rounded-full uppercase">
+                                Case de Pico de Performance
+                            </span>
+                            <div class="font-display text-7xl sm:text-9xl text-sage-400 leading-none">
+                                36X
+                            </div>
+                            <h3 class="font-display text-2xl sm:text-3xl uppercase">Retorno Sobre Investimento (ROAS)</h3>
+                            <p class="text-xs sm:text-sm text-cream-100/80 max-w-md">
+                                Resultado obtido no primeiro mês de campanha integrada entre reestruturação total da landing page e anúncios patrocinados de alta intenção.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-cream-100/10 text-xs text-cream-100/60 uppercase tracking-widest">
+                            Cliente: Mobilidade Urbana / LUK MOB
+                        </div>
+                    </div>
+
+                    <!-- Right Stacked KPIs -->
+                    <div class="md:col-span-12 lg:col-span-5 space-y-6 flex flex-col justify-between">
+                        <!-- KPI Card Top Right -->
+                        <div class="bg-sage-400 text-wine-950 p-8 rounded-3xl space-y-2 hover-lift flex-1 flex flex-col justify-center">
+                            <span class="text-xs font-bold uppercase tracking-wider text-wine-950/70 block">Taxa de Conversão na Página</span>
+                            <div class="font-display text-5xl sm:text-6xl text-wine-950">
+                                8,8%
+                            </div>
+                            <p class="text-xs text-wine-950/80 font-medium">Média superior ao mercado (padrão 2.5%) em captação de leads qualificados.</p>
+                        </div>
+
+                        <!-- KPI Card Bottom Right -->
+                        <div class="bg-beige-200 text-wine-950 p-8 rounded-3xl space-y-2 hover-lift flex-1 flex flex-col justify-center">
+                            <span class="text-xs font-bold uppercase tracking-wider text-wine-950/70 block">Faturamento Gerado no 1º Mês</span>
+                            <div class="font-display text-5xl sm:text-6xl text-wine-700">
+                                +132 MIL
+                            </div>
+                            <p class="text-xs text-wine-950/80 font-medium">Receita adicional direta rastreada pelo pixel em nova oferta lançada.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Clients Logo Name Rail -->
+                <div class="pt-8 border-t border-cream-100/10 space-y-4">
+                    <span class="text-center block text-xs font-bold text-cream-100/60 uppercase tracking-widest">
+                        Marcas que já contaram com nossa estratégia:
+                    </span>
+                    <div class="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 font-display text-lg sm:text-xl text-cream-100/70 uppercase">
+                        <span>BLUE FIT ACADEMIAS</span> <span class="text-sage-400 text-xs">✦</span>
+                        <span>DECOR COLORS</span> <span class="text-sage-400 text-xs">✦</span>
+                        <span>UNIFOR</span> <span class="text-sage-400 text-xs">✦</span>
+                        <span>UNIVS</span> <span class="text-sage-400 text-xs">✦</span>
+                        <span>UNILEÃO</span> <span class="text-sage-400 text-xs">✦</span>
+                        <span>PRIME PLUS</span> <span class="text-sage-400 text-xs">✦</span>
+                        <span>LUK MOB</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- S11: FAQ ACCORDION SECTION -->
+        <section id="faq" class="bg-cream-100 text-wine-950 rounded-4xl p-6 sm:p-12 lg:p-16 shadow-xl">
+            <div class="max-w-7xl mx-auto grid lg:grid-cols-12 gap-10">
+                <!-- FAQ Left Column Header -->
+                <div class="lg:col-span-5 space-y-6">
+                    <span class="bg-wine-950 text-cream-100 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest">
+                        Dúvidas Frequentes
+                    </span>
+                    <h2 class="font-display text-3xl sm:text-5xl uppercase leading-[0.95]">
+                        PERGUNTAS? EU TENHO AS <span class="font-editorial lowercase text-wine-700 font-normal px-1">respostas.</span>
+                    </h2>
+                    <p class="text-sm text-wine-950/75 leading-relaxed">
+                        Ainda com dúvidas sobre como funciona a parceria ou qual serviço atende melhor o seu momento atual?
+                    </p>
+                    <a href="https://wa.me/5500000000000?text=Ol%C3%A1%20Thalyta,%20tenho%20uma%20d%C3%BAvida!" target="_blank" class="inline-flex items-center gap-3 bg-wine-950 hover:bg-wine-700 text-cream-100 font-bold px-6 py-3.5 rounded-full text-sm transition-all shadow-md">
+                        <span>Tirar Dúvida no WhatsApp</span>
+                        <span class="text-sage-400">↗</span>
+                    </a>
+                </div>
+
+                <!-- FAQ Right Accordion Column -->
+                <div class="lg:col-span-7 space-y-4" id="faq-accordion">
+                    <!-- FAQ Item 1 -->
+                    <div class="bg-white border border-wine-950/10 rounded-2xl p-6 transition-all duration-200">
+                        <button class="w-full flex items-center justify-between gap-4 text-left font-bold text-base sm:text-lg text-wine-950 font-sans faq-toggle">
+                            <span>Qual é o prazo de entrega de uma Landing Page?</span>
+                            <span class="w-8 h-8 rounded-full bg-wine-950 text-sage-400 flex items-center justify-center shrink-0 font-display text-xl transition-transform faq-icon">+</span>
+                        </button>
+                        <div class="hidden pt-4 text-sm text-wine-950/75 leading-relaxed border-t border-wine-950/10 mt-4 faq-content">
+                            O prazo médio de entrega de uma Landing Page completa (com arquitetura de copy, design exclusivo e desenvolvimento) é de 7 a 10 dias úteis após o preenchimento do formulário de alinhamento (briefing).
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 2 -->
+                    <div class="bg-white border border-wine-950/10 rounded-2xl p-6 transition-all duration-200">
+                        <button class="w-full flex items-center justify-between gap-4 text-left font-bold text-base sm:text-lg text-wine-950 font-sans faq-toggle">
+                            <span>Qual o valor recomendado para investir em Anúncios?</span>
+                            <span class="w-8 h-8 rounded-full bg-wine-950 text-sage-400 flex items-center justify-center shrink-0 font-display text-xl transition-transform faq-icon">+</span>
+                        </button>
+                        <div class="hidden pt-4 text-sm text-wine-950/75 leading-relaxed border-t border-wine-950/10 mt-4 faq-content">
+                            Recomendamos um orçamento mínimo a partir de R$ 20,00 a R$ 30,00 por dia para o Meta Ads (Instagram/Facebook) ou Google Ads, permitindo que a plataforma tenha dados suficientes para otimizar os resultados.
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 3 -->
+                    <div class="bg-white border border-wine-950/10 rounded-2xl p-6 transition-all duration-200">
+                        <button class="w-full flex items-center justify-between gap-4 text-left font-bold text-base sm:text-lg text-wine-950 font-sans faq-toggle">
+                            <span>Preciso assinar um contrato de fidelidade longo?</span>
+                            <span class="w-8 h-8 rounded-full bg-wine-950 text-sage-400 flex items-center justify-center shrink-0 font-display text-xl transition-transform faq-icon">+</span>
+                        </button>
+                        <div class="hidden pt-4 text-sm text-wine-950/75 leading-relaxed border-t border-wine-950/10 mt-4 faq-content">
+                            Para a criação do Site/Landing Page o pagamento é pontual. Para a Gestão de Tráfego Pago, trabalhamos com contrato renovável sem multas abusivas, pois acreditamos na retenção através de resultados reais.
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 4 -->
+                    <div class="bg-white border border-wine-950/10 rounded-2xl p-6 transition-all duration-200">
+                        <button class="w-full flex items-center justify-between gap-4 text-left font-bold text-base sm:text-lg text-wine-950 font-sans faq-toggle">
+                            <span>Você atende empresas de qualquer segmento?</span>
+                            <span class="w-8 h-8 rounded-full bg-wine-950 text-sage-400 flex items-center justify-center shrink-0 font-display text-xl transition-transform faq-icon">+</span>
+                        </button>
+                        <div class="hidden pt-4 text-sm text-wine-950/75 leading-relaxed border-t border-wine-950/10 mt-4 faq-content">
+                            Sim! Atendemos prestadores de serviços, clínicas de saúde e estética, infoprodutores, negócios locais, e-commerces e empresas B2B. A estratégia é personalizada para a jornada do seu consumidor.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- S12: FINAL CTA FOOTER SECTION -->
+        <section class="bg-sage-400 text-wine-950 rounded-4xl p-6 sm:p-12 lg:p-16 shadow-xl relative overflow-hidden">
+            <div class="max-w-7xl mx-auto space-y-12 relative z-10">
+                <div class="grid lg:grid-cols-12 gap-8 items-center">
+                    <div class="lg:col-span-8 space-y-6 text-center lg:text-left">
+                        <span class="bg-wine-950 text-cream-100 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest inline-block">
+                            Próximo Passo
+                        </span>
+                        <h2 class="font-display text-4xl sm:text-6xl lg:text-7xl uppercase leading-[0.92]">
+                            PRONTO PARA FAZER SEU NEGÓCIO 
+                            <span class="font-editorial lowercase text-wine-700 font-normal block sm:inline">crescer?</span>
+                        </h2>
+                        <p class="text-wine-950/80 text-base sm:text-lg max-w-xl mx-auto lg:mx-0 font-medium">
+                            Agende uma conversa rápida de 15 minutos sem compromisso. Vamos analisar o seu momento atual e indicar exatamente o plano ideal.
+                        </p>
+                    </div>
+
+                    <!-- CTA Actions -->
+                    <div class="lg:col-span-4 flex flex-col gap-4 items-center lg:items-end">
+                        <a href="https://wa.me/5500000000000?text=Ol%C3%A1%20Thalyta,%20quero%20agendar%20uma%20conversa!" target="_blank" class="w-full sm:w-auto bg-wine-950 hover:bg-wine-700 text-cream-100 font-bold px-8 py-5 rounded-full text-base sm:text-lg flex items-center justify-center gap-3 transition-all shadow-xl group">
+                            <span>Agendar Diagnóstico Grátis</span>
+                            <span class="w-8 h-8 rounded-full bg-sage-400 text-wine-950 flex items-center justify-center text-sm font-bold group-hover:bg-cream-100 transition-colors">↗</span>
+                        </a>
+                        <span class="text-xs text-wine-950/70 font-bold uppercase tracking-wider">
+                            ✓ Resposta em até 24h úteis
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Huge Footer Wordmark -->
+                <div class="pt-12 border-t border-wine-950/20 text-center">
+                    <span class="font-display text-[12vw] sm:text-[14vw] leading-none uppercase tracking-tight text-wine-950/90 block select-none">
+                        THALYTA LUCENA
+                    </span>
+                </div>
+
+                <!-- Copyright Bar -->
+                <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 text-xs font-semibold text-wine-950/70 border-t border-wine-950/10">
+                    <div>
+                        © 2026 Thalyta Lucena · Todos os direitos reservados.
+                    </div>
+                    <div class="flex gap-6 uppercase">
+                        <a href="#servicos" class="hover:underline">Serviços</a>
+                        <a href="#portfolio" class="hover:underline">Portfólio</a>
+                        <a href="#faq" class="hover:underline">FAQ</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- INTERACTIVE ACCORDION SCRIPT -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const accordionToggles = document.querySelectorAll('.faq-toggle');
+
+            accordionToggles.forEach(toggle => {
+                toggle.addEventListener('click', function () {
+                    const content = this.nextElementSibling;
+                    const icon = this.querySelector('.faq-icon');
+                    const parentCard = this.parentElement;
+
+                    // Toggle visibility
+                    const isOpen = !content.classList.contains('hidden');
+
+                    // Close all active items
+                    document.querySelectorAll('.faq-content').forEach(c => c.classList.add('hidden'));
+                    document.querySelectorAll('.faq-icon').forEach(i => {
+                        i.textContent = '+';
+                        i.classList.remove('bg-wine-700', 'text-cream-100');
+                        i.classList.add('bg-wine-950', 'text-sage-400');
+                    });
+                    document.querySelectorAll('#faq-accordion > div').forEach(card => card.classList.remove('border-wine-700', 'shadow-md'));
+
+                    // If wasn't open, open current
+                    if (!isOpen) {
+                        content.classList.remove('hidden');
+                        icon.textContent = '×';
+                        icon.classList.remove('bg-wine-950', 'text-sage-400');
+                        icon.classList.add('bg-wine-700', 'text-cream-100');
+                        parentCard.classList.add('border-wine-700', 'shadow-md');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

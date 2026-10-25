@@ -1,0 +1,11 @@
+{
+  "name": "thalyta-lucena-landing-page",
+  "private": true,
+  "description": "Landing page da Thalyta Lucena. HTML, CSS e JavaScript puros, GSAP e Lenis.",
+  "type": "module",
+  "scripts": {
+    "dev": "python3 -m http.server 4321",
+    "check:placeholders": "node scripts/check-placeholders.mjs",
+    "check:copy": "node scripts/check-copy.mjs"
+  }
+}
