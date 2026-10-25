@@ -129,7 +129,7 @@ Todo CTA leva ao formulário, exceto "Falar no WhatsApp" e os links de portfóli
 
 ## Stack e hospedagem
 - Astro estático, ilhas de JS apenas onde precisa (abas, FAQ, carrossel).
-- Vercel. Endereço atual: `thalytaweb.vercel.app`. Menu leva a páginas próprias: /servicos, /portfolio, /processo, /duvidas.
+- Vercel. Endereço atual: `thalytalucena.vercel.app`. Menu leva a páginas próprias: /servicos, /portfolio, /processo, /duvidas.
 
 ## Critérios de pronto
 - Lighthouse mobile: Performance 95 ou mais, SEO 100, Acessibilidade 95 ou mais.

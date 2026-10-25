@@ -62,10 +62,10 @@ Thalyta Lucena, desenvolvedora de sites e gestora de tráfego pago. Instagram @t
 - Ao terminar uma etapa, liste o que foi feito, o que ficou pendente e como testar.
 
 ## Contatos e dados legais (conferir antes de publicar)
-WhatsApp (85) 99424-9599 · e-mail thalucena9@gmail.com · CNPJ 51.890.738/0001-02 · Fortaleza/CE. Landing page em `thalytaweb.vercel.app` (domínio próprio ainda não comprado). Hospedagem: Vercel.
+WhatsApp (85) 99424-9599 · e-mail thalucena9@gmail.com · CNPJ 51.890.738/0001-02 · Fortaleza/CE. Landing page em `thalytalucena.vercel.app` (domínio próprio ainda não comprado). Hospedagem: Vercel.
 
 ## Ordem dos projetos e domínios
 - Landing page: `{{DOMINIO}}`
 - Link da bio: `link.{{DOMINIO}}`
 - Formulário: `contato.{{DOMINIO}}`
-Os três são repositórios separados e repassam UTMs por query string.
+Os três ficam no mesmo monorepo (pastas e projetos Vercel separados) e repassam UTMs por query string.

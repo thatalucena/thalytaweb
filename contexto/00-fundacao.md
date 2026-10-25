@@ -81,9 +81,9 @@ Direta, próxima e sem máscara. Nada de jargão técnico. A pessoa deve sentir 
 - Eventos a medir: clique no link da bio, clique em CTA da LP, início do formulário, conclusão de cada etapa, envio (lead), clique no WhatsApp, reunião marcada (manual, na planilha).
 
 ## 10. Decisões fechadas
-- Hospedagem: Vercel. Endereço atual da landing page: https://thalytaweb.vercel.app (domínio próprio ainda não comprado).
+- Hospedagem: Vercel. Endereço atual da landing page: https://thalytalucena.vercel.app (domínio próprio ainda não comprado).
 - Leads: Supabase e planilha do Google.
-- Três repositórios separados: link da bio, landing page, formulário.
+- Um monorepo (`thalytaweb`) com três pastas: `landing-page/`, `link-bio/`, `forms/`; um projeto Vercel por pasta.
 - Plataformas de anúncio: Meta e Google.
 - Formulário com uma linha de consentimento (LGPD), política de privacidade curta e campo anti-spam invisível.
 - Em dados de exemplo: **nenhum número inventado vai para o ar**. Usar placeholders `{{...}}` e um script que bloqueia o deploy se sobrar algum.
