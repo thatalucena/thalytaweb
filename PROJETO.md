@@ -15,7 +15,7 @@ Três peças, mesma marca, mesmo objetivo: gerar leads qualificados para **sites
 |---|---|---|---|
 | Landing page (site principal) | **Pronta e publicada** | https://thalytalucena.vercel.app | Explica, prova e conduz ao formulário |
 | Link da bio | **Pronto, falta publicar** | `biothalyta.vercel.app` | Converte o clique do Instagram @thalyta.web |
-| Formulário em etapas | A fazer | `contatothalyta.vercel.app` | Qualifica e grava o lead |
+| Formulário em etapas | **Pronto, falta conectar e publicar** | `contatothalyta.vercel.app` | Qualifica e grava o lead |
 
 Fluxo: Instagram → link da bio → formulário (principal), landing page ou WhatsApp. Anúncios → landing page → formulário. Todos repassam UTMs por query string.
 
@@ -46,10 +46,10 @@ thalytaweb/
 ├── img/profile.jpeg          foto original
 ├── landing-page/             ← código da landing page publicada (ver landing-page/README.md)
 ├── link-bio/                 link da bio: site/ = código (ver link-bio/site/README.md), ref/ = telas aprovadas, img/ = fotos e prints originais
-└── forms/                    formulário em etapas (ref/ = telas aprovadas, img/ = fotos e prints)
+└── forms/                    formulário: site/ = código (ver forms/site/README.md), supabase/ = schema, apps-script/ = planilha, ref/ = telas aprovadas, img/ = fotos
 ```
 
-Monorepo: um único repositório no GitHub e um projeto Vercel por pasta, cada um com seu **Root Directory**: `thalytalucena` → `landing-page`, `biothalyta` → `link-bio/site`, `contatothalyta` → `forms`. Os documentos da raiz valem para as três peças.
+Monorepo: um único repositório no GitHub e um projeto Vercel por pasta, cada um com seu **Root Directory**: `thalytalucena` → `landing-page`, `biothalyta` → `link-bio/site`, `contatothalyta` → `forms/site`. Os documentos da raiz valem para as três peças.
 
 **Preservar sempre:** `id visual/`, `references/`, `print ref/`, `design system/`, `img/`. São originais de referência.
 
@@ -197,6 +197,12 @@ Os arquivos `contexto/` foram escritos antes da implementação. Onde divergem, 
 | WhatsApp do link da bio | "...conversar sobre {{interesse}}" | "...conversar sobre site e anúncios." |
 | Cantos no link da bio | Raios da LP (24px, pílula) | id visual 03: cartão 8px · botão 6px · chip 4px (telas de `link-bio/ref`) |
 | Menu | Âncoras na página | Páginas próprias `/servicos`, `/portfolio`, `/processo`, `/duvidas` |
+| Stack do formulário | Next.js + TypeScript | HTML/CSS/JS puros + GSAP + Lenis + **uma função da Vercel** (`api/lead.js`) com Zod (decisão de 25/10/2026) |
+| Ramo Site do formulário | 3 perguntas por etapa do briefing | + "Você já tem site?" (etapa 2) e "Qual valor pretende investir no seu site?" (etapa 3), que entram no score |
+| `?interesse=` no formulário | "pula a etapa 1" | Etapa 1 fica (nome, WhatsApp, e-mail); só a pergunta de interesse some |
+| Consentimento | Uma linha | Checkbox **já marcado**; desmarcado, não envia (decisão de 25/10/2026) |
+| Textareas | Sem exemplo | Placeholder com exemplo curto por ramo |
+| IDs de medição do formulário | `NEXT_PUBLIC_GA_ID`, `NEXT_PUBLIC_META_PIXEL_ID` | `gaId` e `metaPixelId` em `forms/site/assets/js/config.js`, como na LP |
 
 ---
 
@@ -227,35 +233,30 @@ Lighthouse mobile ≥ 95 (performance e acessibilidade) · abre bem no navegador
 
 ---
 
-## 9. Direcionamento: Formulário
+## 9. Formulário (pronto, falta conectar)
 
-Briefing completo: `contexto/03-formulario.md` · instruções: `contexto/CLAUDE-forms.md`.
+Briefing: `contexto/03-formulario.md` · telas: `forms/ref/` · **código e guia de conexão: `forms/site/README.md`**.
 
-### Stack
-Next.js (App Router) + TypeScript + Supabase + Google Apps Script + Vercel. Aqui o framework se justifica (estado multi-etapas e rota de API com chave secreta). Estilo em CSS puro/CSS Modules usando os **mesmos tokens e fontes da LP**.
+### Stack (implementada em 25/10/2026)
+HTML, CSS e JS puros + GSAP 3.12.5 + Lenis 1.1.13, sem build, em `forms/site/`. A única parte de servidor é `api/lead.js` (função da Vercel), que valida com Zod, grava no Supabase pela API REST com a chave secreta e manda o lead ao Apps Script. Mesmos tokens, fontes e logo da LP.
 
-### Experiência
-- Uma pergunta principal por tela (2–3 campos no máx.), "Etapa X de N", botão Voltar com respostas preservadas, teclado correto, opções em cards/chips, validação na hora com erro humano ("Faltou um número no WhatsApp, confere pra mim?"), cor de erro terracota.
-- **Etapa 1** (nome, WhatsApp com máscara, e-mail, interesse: Tráfego pago · Site · Os dois) é salva ao avançar com `status = 'parcial'`.
-- Ramos: **Site** (etapas 2–4) · **Tráfego** (2–5) · **Os dois** (2–6). Perguntas exatas no 03. Definir o fluxo de forma declarativa em `src/lib/fluxo.ts`.
-- `?interesse=site|trafego|ambos` pula a escolha e começa na etapa 2. Aceita `utm_*` e `pagina_origem`.
-- Consentimento (1 linha, última etapa) com link para a política de privacidade da LP.
+- **Fonte única das perguntas:** `forms/site/assets/js/fluxo.js` (ramos, opções, mensagens de erro, score). O navegador monta as telas e a API valida com o mesmo arquivo.
+- **Ramos:** Site 4 etapas · Tráfego 5 · Os dois 6. Máximo de 3 campos por etapa.
+- **Parcial → completo:** etapa 1 salva em segundo plano (`parcial`); o envio final atualiza o mesmo registro com um token que só aquele navegador tem.
+- **Obrigado:** "Recebi seu pedido, obrigada." · "Vou olhar suas respostas com calma e te chamo no WhatsApp no mesmo dia útil." · 3 passos · WhatsApp e Instagram · `generate_lead` uma vez por envio.
+- **Dados:** `forms/supabase/schema.sql` (RLS ligada, sem acesso anon) e `forms/apps-script/Code.gs` (uma linha por lead, atualizada pelo id; colunas manuais preservadas).
+- **Anti-spam:** honeypot, 5 registros novos por IP por hora (só o hash do IP), validação no servidor.
+- **Score 0–9:** investimento (verba de anúncio, ou valor do site no ramo Site) 0–4 · início 0–3 · já anuncia ou já tem site +1 · objetivo fora de "Outro" +1. ≥ 5: chamar no mesmo dia.
+- **Env (Vercel):** `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `APPS_SCRIPT_URL`, `APPS_SCRIPT_SECRET`. Nunca versionar `.env*`.
+- **Eventos:** `form_start`, `form_step_1…N`, `select_interesse`, `form_abandon` (com a etapa), `generate_lead` (GA4, Pixel `Lead`).
+- **Comandos:** `npm run dev` (localhost:4323, banco em memória sem `.env.local`) · `npm test` · `npm run check:copy` · `npm run check:placeholders`.
 
-### Página de obrigado
-"Recebi seu pedido, obrigada." · texto **sem horário**: "Vou olhar suas respostas com calma e te chamo no WhatsApp no mesmo dia útil." · bloco "O que acontece agora" (3 passos) · botões WhatsApp e Instagram · dispara `generate_lead` com interesse e faixa de verba.
-
-### Dados
-- Supabase, tabela `leads` (campos no 03), RLS ligada, gravação só pela rota `/api/lead` com service role key no servidor.
-- Apps Script envia cada lead (parcial e completo) para a planilha.
-- Anti-spam: honeypot, limite por IP, validação com Zod.
-- Score 0–9 no servidor (verba, início, já anuncia/tem site, objetivo claro). ≥ 5: chamar no mesmo dia.
-- Env: `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `APPS_SCRIPT_URL`, `NEXT_PUBLIC_GA_ID`, `NEXT_PUBLIC_META_PIXEL_ID`. Nunca versionar `.env`.
-
-### Eventos
-`form_start`, `form_step_1…N`, `form_abandon` (com etapa), `generate_lead` (GA4, Pixel `Lead`, Google Ads via GA4).
+### A confirmar
+- Faixas de "Qual valor pretende investir no seu site?": Até R$ 1.000 · R$ 1.000 a 3.000 · R$ 3.000 a 5.000 · Acima de R$ 5.000 · Ainda não sei.
+- Mensagem do WhatsApp no obrigado: "Oi, Thalyta! Acabei de enviar o formulário de diagnóstico."
 
 ### Depois de publicar
-Preencher `formUrl` em `landing-page/assets/js/config.js` (URL completa) e no link da bio. Testar os três ramos em iPhone e Android, linha na planilha em até 1 minuto, parcial → completo, honeypot e limite por IP.
+Seguir "Como conectar" no `forms/site/README.md` (Supabase, Apps Script, Vercel, medição) e preencher `formUrl` na LP e no link da bio.
 
 ---
 
@@ -267,7 +268,7 @@ Preencher `formUrl` em `landing-page/assets/js/config.js` (URL completa) e no li
 
 ## 11. Pendências gerais
 1. Preencher `gaId` e `metaPixelId` em `landing-page/assets/js/config.js`.
-2. Criar e publicar o formulário; preencher `formUrl`.
+2. Conectar o formulário (Supabase, planilha, Vercel), publicar e preencher `formUrl` na LP e no link da bio.
 3. Publicar o link da bio (projeto Vercel `biothalyta`, Root Directory `link-bio/site`), testar no navegador do Instagram (iOS e Android) e trocar o link do perfil @thalyta.web.
 4. Comprar domínio e migrar para `{{DOMINIO}}`, `link.` e `contato.`; atualizar sitemap, canonical, OG e `llms.txt`.
 5. Retrato profissional ≥ 1000px.

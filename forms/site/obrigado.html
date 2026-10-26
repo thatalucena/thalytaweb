@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Pedido recebido | Thalyta Lucena</title>
+  <meta name="description" content="Recebi seu pedido. Vou olhar suas respostas com calma e te chamo no WhatsApp no mesmo dia útil.">
+  <meta name="theme-color" content="#3E0F19">
+  <meta name="robots" content="noindex, nofollow">
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/instrument-serif-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
+
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/form.css">
+  <link rel="stylesheet" href="assets/vendor/lenis.css">
+
+  <script>
+    (function () {
+      var root = document.documentElement;
+      root.classList.add('js');
+      if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        root.classList.add('motion');
+        setTimeout(function () { if (!window.__motionReady) root.classList.remove('motion'); }, 2500);
+      }
+    })();
+  </script>
+</head>
+<body class="page-thanks">
+  <svg width="0" height="0" class="sprite" aria-hidden="true" focusable="false">
+    <symbol id="i-star" viewBox="0 0 24 24"><path fill="currentColor" d="M12 0c.9 7.6 4.4 11.1 12 12-7.6.9-11.1 4.4-12 12-.9-7.6-4.4-11.1-12-12 7.6-.9 11.1-4.4 12-12Z"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 11.5a8.5 8.5 0 0 1-12.4 7.6L3.5 20.5l1.4-4.4a8.5 8.5 0 1 1 15.6-4.6Z"/></symbol>
+    <symbol id="i-arrow-up" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></symbol>
+  </svg>
+
+  <header class="topbar topbar--thanks">
+    <div class="topbar__row">
+      <a class="logo topbar__logo" href="https://thalytalucena.vercel.app/" aria-label="Thalyta Lucena, ir para o site">
+        <span class="logo__first">Thalyta</span>
+        <svg class="logo__star" aria-hidden="true"><use href="#i-star"/></svg>
+        <span class="logo__last">lucena</span>
+      </a>
+    </div>
+  </header>
+
+  <main class="thanks" id="conteudo">
+    <section class="thanks__hero" aria-labelledby="thanks-title">
+      <svg class="thanks__star" aria-hidden="true"><use href="#i-star"/></svg>
+      <h1 class="thanks__title" id="thanks-title" data-intro>Recebi seu pedido, <em>obrigada</em>.</h1>
+      <p class="thanks__lead" data-intro>Vou olhar suas respostas com calma e te chamo no WhatsApp no mesmo dia útil.</p>
+    </section>
+
+    <section class="thanks__next" aria-labelledby="next-title">
+      <h2 class="thanks__subtitle" id="next-title" data-intro>O que acontece <em>agora</em></h2>
+      <ol class="next-steps">
+        <li><span class="next-steps__num" aria-hidden="true">1</span> Eu analiso seu perfil.</li>
+        <li><span class="next-steps__num" aria-hidden="true">2</span> Te chamo para uma conversa rápida.</li>
+        <li><span class="next-steps__num" aria-hidden="true">3</span> Você recebe meu fluxo de trabalho e, se já tem site ou anúncio, uma análise.</li>
+      </ol>
+
+      <div class="thanks__actions">
+        <a class="btn btn--bordo" href="https://wa.me/5585994249599" data-whatsapp target="_blank" rel="noopener">
+          <svg aria-hidden="true"><use href="#i-chat"/></svg>
+          Falar agora no WhatsApp
+        </a>
+        <a class="btn btn--outline" href="https://www.instagram.com/thalyta.web/" data-instagram target="_blank" rel="noopener">
+          Ver meu Instagram @thalyta.web
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <script src="assets/js/no-widows.js"></script>
+  <script src="assets/vendor/gsap.min.js" defer></script>
+  <script src="assets/vendor/lenis.min.js" defer></script>
+  <script type="module" src="assets/js/obrigado.js"></script>
+</body>
+</html>

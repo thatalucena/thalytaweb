@@ -1,5 +1,7 @@
 # CLAUDE.md: Formulário de captação
 
+> **Atualizado em 25/10/2026:** a stack e algumas regras abaixo mudaram (HTML/CSS/JS puros + função da Vercel, tokens como custom properties, texto suave `#6B5F56`). Vale o `PROJETO.md` (seções 7 e 9) e o `forms/site/README.md`.
+
 Leia primeiro: `contexto/00-fundacao.md`, `contexto/03-formulario.md` e `contexto/04-claude-design.md` (tokens e telas aprovadas).
 
 ## O que é
