@@ -15,7 +15,7 @@ Três peças, mesma marca, mesmo objetivo: gerar leads qualificados para **sites
 |---|---|---|---|
 | Landing page (site principal) | **Pronta e publicada** | https://thalytalucena.vercel.app | Explica, prova e conduz ao formulário |
 | Link da bio | **Pronto, falta publicar** | `biothalyta.vercel.app` | Converte o clique do Instagram @thalyta.web |
-| Formulário em etapas | **Pronto, falta conectar e publicar** | `contatothalyta.vercel.app` | Qualifica e grava o lead |
+| Formulário em etapas | **Publicado e conectado** (Supabase + planilha) | https://contatothalyta.vercel.app | Qualifica e grava o lead |
 
 Fluxo: Instagram → link da bio → formulário (principal), landing page ou WhatsApp. Anúncios → landing page → formulário. Todos repassam UTMs por query string.
 
@@ -233,7 +233,7 @@ Lighthouse mobile ≥ 95 (performance e acessibilidade) · abre bem no navegador
 
 ---
 
-## 9. Formulário (pronto, falta conectar)
+## 9. Formulário (publicado em 26/10/2026)
 
 Briefing: `contexto/03-formulario.md` · telas: `forms/ref/` · **código e guia de conexão: `forms/site/README.md`**.
 
@@ -255,8 +255,8 @@ HTML, CSS e JS puros + GSAP 3.12.5 + Lenis 1.1.13, sem build, em `forms/site/`. 
 - Faixas de "Qual valor pretende investir no seu site?": Até R$ 1.000 · R$ 1.000 a 3.000 · R$ 3.000 a 5.000 · Acima de R$ 5.000 · Ainda não sei.
 - Mensagem do WhatsApp no obrigado: "Oi, Thalyta! Acabei de enviar o formulário de diagnóstico."
 
-### Depois de publicar
-Seguir "Como conectar" no `forms/site/README.md` (Supabase, Apps Script, Vercel, medição) e preencher `formUrl` na LP e no link da bio.
+### Ligação com as outras peças (26/10/2026)
+`formUrl` preenchido na LP e no link da bio. LP: botões com interesse e o filtro "Você está buscando" abrem `?interesse=site|trafego|ambos`; botões genéricos abrem sem interesse (a pergunta aparece na etapa 1). Todos repassam UTMs e `pagina_origem`. Falta a medição (GA4 e Pixel).
 
 ---
 
@@ -268,7 +268,7 @@ Seguir "Como conectar" no `forms/site/README.md` (Supabase, Apps Script, Vercel,
 
 ## 11. Pendências gerais
 1. Preencher `gaId` e `metaPixelId` em `landing-page/assets/js/config.js`.
-2. Conectar o formulário (Supabase, planilha, Vercel), publicar e preencher `formUrl` na LP e no link da bio.
+2. Medição do formulário: preencher `gaId` e `metaPixelId` em `forms/site/assets/js/config.js`, marcar `generate_lead` como evento principal no GA4 e importar no Google Ads.
 3. Publicar o link da bio (projeto Vercel `biothalyta`, Root Directory `link-bio/site`), testar no navegador do Instagram (iOS e Android) e trocar o link do perfil @thalyta.web.
 4. Comprar domínio e migrar para `{{DOMINIO}}`, `link.` e `contato.`; atualizar sitemap, canonical, OG e `llms.txt`.
 5. Retrato profissional ≥ 1000px.

@@ -5,10 +5,10 @@ export const CONFIG = {
   // WhatsApp com DDI + DDD, só números.
   whatsapp: '5585994249599',
 
-  // Formulário em etapas (pasta forms/, ainda não publicado).
-  // Vazio = "Quero meu diagnóstico" abre o WhatsApp com a mensagem de diagnóstico.
-  // Quando publicar, coloque a URL completa: 'https://contatothalyta.vercel.app/'.
-  formUrl: '',
+  // Formulário em etapas (forms/site, projeto Vercel contatothalyta).
+  // "Quero meu diagnóstico" abre com as UTMs da bio e pagina_origem=link_da_bio.
+  // Vazio = volta a abrir o WhatsApp com a mensagem de diagnóstico.
+  formUrl: 'https://contatothalyta.vercel.app/',
 
   // IDs de medição. Vazio = a tag não carrega.
   gaId: '',

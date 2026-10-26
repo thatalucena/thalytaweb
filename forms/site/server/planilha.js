@@ -37,15 +37,20 @@ export function linhaDaPlanilha(row) {
 }
 
 export async function enviarParaPlanilha(row) {
-  const url = process.env.APPS_SCRIPT_URL;
-  if (!url) return { ok: false, motivo: 'APPS_SCRIPT_URL vazia' };
+  // Espaço ou quebra de linha colados no painel da Vercel quebram a URL e o segredo.
+  const url = String(process.env.APPS_SCRIPT_URL || '').trim();
+  const segredo = String(process.env.APPS_SCRIPT_SECRET || '').trim();
+  if (!url) {
+    console.error('Planilha: APPS_SCRIPT_URL vazia nesta implantação');
+    return { ok: false, motivo: 'APPS_SCRIPT_URL vazia' };
+  }
 
   try {
     const response = await fetch(url, {
       method: 'POST',
       // text/plain evita o preflight; o Apps Script lê o corpo como texto.
       headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-      body: JSON.stringify({ segredo: process.env.APPS_SCRIPT_SECRET || '', lead: linhaDaPlanilha(row) }),
+      body: JSON.stringify({ segredo, lead: linhaDaPlanilha(row) }),
       redirect: 'follow',
       signal: AbortSignal.timeout(TIMEOUT),
     });
@@ -56,7 +61,19 @@ export async function enviarParaPlanilha(row) {
     }
     return { ok: true };
   } catch (error) {
-    console.error('Planilha indisponível', error.message);
+    // "fetch failed" sozinho não diz nada: registra a causa e o formato do endereço (sem o ID do script).
+    const cause = error.cause ? `${error.cause.code || ''} ${error.cause.message || ''}`.trim() : '';
+    console.error('Planilha indisponível', error.name, error.message, cause ? `| causa: ${cause}` : '', `| destino: ${formatoDoEndereco(url)}`);
     return { ok: false };
+  }
+}
+
+function formatoDoEndereco(url) {
+  try {
+    const { protocol, host, pathname } = new URL(url);
+    const partes = pathname.split('/').map((p) => (p.length > 20 ? `<${p.length} caracteres>` : p));
+    return `${protocol}//${host}${partes.join('/')} (tamanho ${url.length})`;
+  } catch {
+    return `endereço inválido (começa com "${url.slice(0, 12)}", tamanho ${url.length})`;
   }
 }
