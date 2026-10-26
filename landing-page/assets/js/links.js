@@ -2,8 +2,8 @@
 // (#diagnostico) e marcam o interesse no filtro; só o botão do filtro abre o formulário,
 // com interesse e UTMs. Os de WhatsApp abrem a conversa.
 
-import { CONFIG, WHATSAPP_MESSAGES, isConfigured } from './config.js';
-import { track } from './tracking.js';
+import { CONFIG, WHATSAPP_MESSAGES, isConfigured } from './config.js?v=20261026';
+import { track } from './tracking.js?v=20261026';
 
 const UTM_KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'];
 const UTM_STORAGE = 'lp_utms';

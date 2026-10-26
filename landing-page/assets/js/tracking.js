@@ -1,6 +1,6 @@
 // Rastreamento: dataLayer (GTM/GA4) e Meta Pixel, só se os IDs estiverem configurados.
 
-import { CONFIG, isConfigured } from './config.js';
+import { CONFIG, isConfigured } from './config.js?v=20261026';
 
 window.dataLayer = window.dataLayer || [];
 

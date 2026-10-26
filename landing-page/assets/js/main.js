@@ -1,9 +1,9 @@
 // Ponto de entrada da landing page.
 
-import { initTags, initSectionViews, initClickTracking } from './tracking.js';
-import { initLinks } from './links.js';
-import { initMenu, initTabs, initActiveNav, initToTop } from './ui.js';
-import { initScroll, initHeaderTheme, initMotion } from './motion.js';
+import { initTags, initSectionViews, initClickTracking } from './tracking.js?v=20261026';
+import { initLinks } from './links.js?v=20261026';
+import { initMenu, initTabs, initActiveNav, initToTop } from './ui.js?v=20261026';
+import { initScroll, initHeaderTheme, initMotion } from './motion.js?v=20261026';
 
 const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const hasGsap = Boolean(window.gsap && window.ScrollTrigger);
