@@ -281,6 +281,13 @@ a[aria-disabled="true"] {
   max-width: 560px;
 }
 
+/* Botão de diagnóstico centralizado no fim de uma seção. */
+.section-cta {
+  display: flex;
+  justify-content: center;
+  margin-top: 48px;
+}
+
 .star {
   display: inline-block;
   width: 1em;
@@ -335,6 +342,11 @@ a[aria-disabled="true"] {
 
 .h1 .line > span {
   display: inline-block;
+}
+
+/* Com o Lenis, a ancoragem de rolagem do navegador desfaz o fim das rolagens longas até uma âncora. */
+html.lenis {
+  overflow-anchor: none;
 }
 
 @media (prefers-reduced-motion: reduce) {

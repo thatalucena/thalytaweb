@@ -2,7 +2,7 @@
 
 import { initTags, initSectionViews, initClickTracking } from './tracking.js';
 import { initLinks } from './links.js';
-import { initMenu, initTabs, initMobileBar, initActiveNav, initToTop } from './ui.js';
+import { initMenu, initTabs, initActiveNav, initToTop } from './ui.js';
 import { initScroll, initHeaderTheme, initMotion } from './motion.js';
 
 const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -13,7 +13,6 @@ initLinks();
 initClickTracking();
 initSectionViews();
 initTabs();
-initMobileBar();
 initActiveNav();
 
 let lenis = null;

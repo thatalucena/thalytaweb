@@ -36,7 +36,7 @@ landing-page/
 │   │   ├── config.js             WhatsApp, URL do formulário, IDs de GA4 e Pixel
 │   │   ├── links.js              links do formulário (interesse + UTMs) e WhatsApp
 │   │   ├── tracking.js           dataLayer, GA4, Meta Pixel, eventos do briefing
-│   │   ├── ui.js                 menu mobile, abas, barra fixa, página ativa no menu, voltar ao topo
+│   │   ├── ui.js                 menu mobile, abas, página ativa no menu, voltar ao topo
 │   │   ├── motion.js             Lenis + GSAP (entradas, letreiros, selo, parallax)
 │   │   └── main.js               ponto de entrada
 │   ├── fonts/                    Bricolage Grotesque (subset PT, eixos 400–800) e Instrument Serif

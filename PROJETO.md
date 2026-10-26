@@ -168,7 +168,8 @@ Detalhes técnicos completos em `landing-page/README.md`.
 - **Seções da home (`data-section`):** hero · dor · solucao · diferenciais · servicos · escolha · portfolio · provas · processo · investimento · faq · formulario · rodape.
 - **H1:** "Seu site e seus anúncios trabalhando *juntos* para trazer clientes."
 - **Config única:** `landing-page/assets/js/config.js` (`whatsapp`, `formUrl`, `gaId`, `metaPixelId`, mensagens de WhatsApp por interesse).
-- **Comportamento dos CTAs (`links.js`):** com `formUrl` vazio, botões com interesse abrem o WhatsApp com mensagem certa e os genéricos levam a `/#diagnostico`. Com `formUrl` preenchido, abrem o formulário com `?interesse=site|trafego|ambos`, UTMs recebidos e `pagina_origem=landing_page`.
+- **Comportamento dos CTAs (`links.js`, 26/10/2026):** todo botão de diagnóstico leva à seção do formulário da home (`#diagnostico`); nas páginas internas, a `/?interesse=<x>#diagnostico`. Botões com interesse marcam o card do filtro "Você está buscando". Só o botão dessa seção abre o formulário (nova aba) com `?interesse=`, UTMs e `pagina_origem=landing_page`; com `formUrl` vazio, ele abre o WhatsApp com a mensagem do interesse. As UTMs ficam guardadas na sessão para sobreviver à troca de página.
+- **Regra dos botões (26/10/2026):** exceções ao caminho acima só os botões que dizem "WhatsApp" e os "Ver site" do portfólio (site do cliente). Nunca duas seções seguidas sem botão; botão de fim de seção usa `.section-cta` (centralizado, em `base.css`). Com o Lenis, `html.lenis { overflow-anchor: none }` evita que a ancoragem do navegador desfaça a rolagem até a âncora.
 - **Eventos (`tracking.js`):** `view_section_<nome>`, `click_cta_<posicao>`, `select_interesse`, `click_whatsapp`, `click_site_<nome>`. Tags só carregam se os IDs estiverem preenchidos.
 - **SEO/GEO/AEO:** JSON-LD `ProfessionalService`, `FAQPage`, `BreadcrumbList`, `Review` (sem nota); `sitemap.xml`, `robots.txt`, `llms.txt`, OG image.
 - **Comandos:** `npm run dev` (localhost:4321) · `npm run check:copy` · `npm run check:placeholders`.
@@ -197,6 +198,7 @@ Os arquivos `contexto/` foram escritos antes da implementação. Onde divergem, 
 | WhatsApp do link da bio | "...conversar sobre {{interesse}}" | "...conversar sobre site e anúncios." |
 | Cantos no link da bio | Raios da LP (24px, pílula) | id visual 03: cartão 8px · botão 6px · chip 4px (telas de `link-bio/ref`) |
 | Menu | Âncoras na página | Páginas próprias `/servicos`, `/portfolio`, `/processo`, `/duvidas` |
+| CTAs da LP | Todo CTA leva ao formulário; barra inferior fixa no mobile | CTAs levam à seção `#diagnostico` e só o botão dela abre o formulário. **Sem barra inferior no mobile**: fixos só o menu e o voltar ao topo (26/10/2026) |
 | Stack do formulário | Next.js + TypeScript | HTML/CSS/JS puros + GSAP + Lenis + **uma função da Vercel** (`api/lead.js`) com Zod (decisão de 25/10/2026) |
 | Ramo Site do formulário | 3 perguntas por etapa do briefing | + "Você já tem site?" (etapa 2) e "Qual valor pretende investir no seu site?" (etapa 3), que entram no score |
 | `?interesse=` no formulário | "pula a etapa 1" | Etapa 1 fica (nome, WhatsApp, e-mail); só a pergunta de interesse some |
@@ -256,7 +258,7 @@ HTML, CSS e JS puros + GSAP 3.12.5 + Lenis 1.1.13, sem build, em `forms/site/`. 
 - Mensagem do WhatsApp no obrigado: "Oi, Thalyta! Acabei de enviar o formulário de diagnóstico."
 
 ### Ligação com as outras peças (26/10/2026)
-`formUrl` preenchido na LP e no link da bio. LP: botões com interesse e o filtro "Você está buscando" abrem `?interesse=site|trafego|ambos`; botões genéricos abrem sem interesse (a pergunta aparece na etapa 1). Todos repassam UTMs e `pagina_origem`. Falta a medição (GA4 e Pixel).
+`formUrl` preenchido na LP e no link da bio. LP: os botões levam à seção do formulário e só o botão do filtro "Você está buscando" abre o formulário com `?interesse=site|trafego|ambos`. Todos repassam UTMs e `pagina_origem`. Falta a medição (GA4 e Pixel).
 
 ---
 

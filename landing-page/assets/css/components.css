@@ -427,55 +427,6 @@
 }
 
 /* --------------------------------------------------------------------------
-   Barra inferior fixa (mobile)
-   -------------------------------------------------------------------------- */
-
-.mobile-bar {
-  position: fixed;
-  left: 8px;
-  right: 8px;
-  bottom: 8px;
-  z-index: 80;
-  display: flex;
-  gap: 8px;
-  padding: 8px;
-  border-radius: 20px;
-  background: var(--branco);
-  box-shadow: 0 0 0 1.5px var(--vinho), var(--sombra-suave);
-  transform: translateY(140%);
-  transition: transform 0.4s var(--ease-out);
-}
-
-.mobile-bar.is-visible {
-  transform: translateY(0);
-}
-
-.mobile-bar__wa {
-  display: grid;
-  place-items: center;
-  width: 56px;
-  min-height: 56px;
-  border-radius: 14px;
-  border: 2px solid var(--vinho);
-  color: var(--vinho);
-  flex: none;
-}
-
-.mobile-bar__wa svg {
-  width: 22px;
-  height: 22px;
-}
-
-.mobile-bar .btn {
-  flex: 1;
-  border-radius: 14px;
-}
-
-@media (min-width: 900px) {
-  .mobile-bar { display: none; }
-}
-
-/* --------------------------------------------------------------------------
    Selo circular serrilhado
    -------------------------------------------------------------------------- */
 
@@ -896,7 +847,7 @@
 .to-top {
   position: fixed;
   right: 16px;
-  bottom: 92px;
+  bottom: 16px;
   z-index: 85;
   display: grid;
   place-items: center;

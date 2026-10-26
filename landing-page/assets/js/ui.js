@@ -86,23 +86,6 @@ export function initTabs() {
   });
 }
 
-// A barra inferior aparece depois do hero e some quando o rodapé está na tela.
-export function initMobileBar() {
-  const bar = document.querySelector('.mobile-bar');
-  const hero = document.querySelector('.hero, .page-hero');
-  const footer = document.querySelector('.footer');
-  if (!bar || !hero || !('IntersectionObserver' in window)) return;
-
-  let heroVisible = true;
-  let footerVisible = false;
-  const update = () => bar.classList.toggle('is-visible', !heroVisible && !footerVisible);
-
-  new IntersectionObserver(([entry]) => { heroVisible = entry.isIntersecting; update(); }, { threshold: 0.1 }).observe(hero);
-  if (footer) {
-    new IntersectionObserver(([entry]) => { footerVisible = entry.isIntersecting; update(); }).observe(footer);
-  }
-}
-
 // Marca no menu a página atual (Serviços, Portfólio, Processo, Dúvidas).
 export function initActiveNav() {
   const path = window.location.pathname.replace(/\/(index\.html)?$/, '') || '/';
