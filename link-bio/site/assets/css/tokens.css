@@ -1,0 +1,73 @@
+/* ==========================================================================
+   Tokens · Link da bio · Thalyta Lucena
+   Fonte: id visual/02 · Cores e tipografia + 03 · Formas (mesmos valores da LP).
+   Decisão: cores sempre em hexadecimal e medidas sempre em px.
+   As custom properties guardam apenas esses valores para manter uma fonte única.
+   ========================================================================== */
+
+/* Bricolage Grotesque variável: peso 400 a 800, largura 75% a 100%.
+   Usados aqui: 400 (texto), 700 (botões, H3), 800 condensado 75% (títulos). */
+@font-face {
+  font-family: "Bricolage Grotesque";
+  font-style: normal;
+  font-weight: 400 800;
+  font-stretch: 75% 100%;
+  font-display: swap;
+  src: url("../fonts/bricolage-grotesque-latin.woff2") format("woff2");
+}
+
+/* Instrument Serif: itálico para a palavra de destaque, regular para subtítulos. */
+@font-face {
+  font-family: "Instrument Serif";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../fonts/instrument-serif-latin.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Instrument Serif";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../fonts/instrument-serif-italic-latin.woff2") format("woff2");
+}
+
+:root {
+  /* Base (60) */
+  --vinho: #3E0F19;          /* fundo dominante */
+  --bordo-escuro: #5E1826;   /* chips, fundo do desktop */
+  --bordo: #7B2132;          /* marca, bloco de CTA */
+
+  /* Claros (30) */
+  --creme: #F6EFE2;
+  --creme-profundo: #EDE3D0;
+
+  /* Acento (10) */
+  --oliva: #B8C29A;          /* CTA no escuro, selo, palavra em itálico */
+  --oliva-hover: #CBD3AF;
+  --oliva-escura: #5E6B45;
+
+  /* Texto */
+  --marrom: #3A2F2A;
+  --marrom-suave: #6B5F56;
+
+  /* Linhas com transparência (hex de 8 dígitos) */
+  --linha-clara: #F6EFE233;
+  --linha-escura: #3A2F2A26;
+
+  /* Tipografia */
+  --font-sans: "Bricolage Grotesque", "Arial Narrow", Arial, sans-serif;
+  --font-serif: "Instrument Serif", Georgia, "Times New Roman", serif;
+
+  /* Cantos (id visual 03): cartão 8px · botão 6px · chip 4px */
+  --r-card: 8px;
+  --r-btn: 6px;
+  --r-chip: 4px;
+
+  /* Sombra dura (mockups da vitrine) */
+  --sombra-dura: 6px 6px 0 #3E0F19;
+
+  /* Movimento */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}

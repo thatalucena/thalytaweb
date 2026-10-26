@@ -1,0 +1,903 @@
+/* ==========================================================================
+   Link da bio · Thalyta Lucena
+   Mobile first (referência: link-bio/ref · mobile 390).
+   A partir de 600px a página vira uma coluna de 390px centralizada (ref · desktop).
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Base
+   -------------------------------------------------------------------------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  background: var(--vinho);
+}
+
+body {
+  margin: 0;
+  background: var(--vinho);
+  color: var(--creme);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 26px;
+  font-weight: 400;
+  font-stretch: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: clip;
+  -webkit-tap-highlight-color: transparent;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+img {
+  height: auto;
+}
+
+a {
+  color: inherit;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+h1,
+h2,
+h3,
+p,
+ul,
+figure {
+  margin: 0;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+p,
+li {
+  text-wrap: pretty;
+}
+
+::selection {
+  background: var(--oliva);
+  color: var(--vinho);
+}
+
+:focus-visible {
+  outline: 3px solid var(--oliva);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.sprite {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Coluna e fundo
+   -------------------------------------------------------------------------- */
+
+.bio {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 390px;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 28px 20px 48px;
+  padding-top: max(28px, env(safe-area-inset-top));
+  padding-bottom: max(48px, env(safe-area-inset-bottom));
+  background: var(--vinho);
+}
+
+.backdrop {
+  display: none;
+}
+
+@media (min-width: 600px) {
+  html,
+  body {
+    background: var(--bordo-escuro);
+  }
+
+  .bio {
+    min-height: calc(100vh - 54px);
+    margin-top: 54px;
+    padding: 28px 20px 64px;
+    border-radius: 12px 12px 0 0;
+  }
+
+  .backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    display: block;
+    pointer-events: none;
+  }
+
+  .backdrop__star {
+    position: absolute;
+    color: var(--bordo);
+  }
+
+  .backdrop__star--1 {
+    top: 8%;
+    left: 8%;
+    width: 250px;
+    height: 250px;
+  }
+
+  .backdrop__star--2 {
+    top: 42%;
+    right: 13%;
+    width: 132px;
+    height: 132px;
+  }
+
+  .backdrop__star--3 {
+    top: 84%;
+    left: 14%;
+    width: 74px;
+    height: 74px;
+    color: var(--oliva);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Tipografia
+   -------------------------------------------------------------------------- */
+
+.h2 {
+  font-size: 32px;
+  line-height: 34px;
+  font-weight: 800;
+  font-stretch: 75%;
+  text-transform: uppercase;
+  letter-spacing: 0;
+  color: var(--creme);
+}
+
+.h2 em {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-stretch: 100%;
+  font-size: 36px;
+  text-transform: none;
+  color: var(--oliva);
+}
+
+/* --------------------------------------------------------------------------
+   1. Apresentação
+   -------------------------------------------------------------------------- */
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding-bottom: 28px;
+}
+
+.intro__top {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 140px;
+  align-items: start;
+  gap: 12px;
+}
+
+.intro__id {
+  padding-top: 26px;
+}
+
+.intro__name {
+  display: flex;
+  flex-direction: column;
+  font-weight: 800;
+}
+
+.intro__first {
+  display: block;
+  font-size: 60px;
+  line-height: 54px;
+  font-stretch: 75%;
+  text-transform: uppercase;
+  color: var(--creme);
+}
+
+.intro__last {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: -2px;
+  margin-left: 2px;
+}
+
+.intro__last em {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 56px;
+  line-height: 56px;
+  color: var(--oliva);
+}
+
+.intro__star {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  color: var(--oliva);
+}
+
+.intro__handle {
+  margin-top: 16px;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 700;
+}
+
+.intro__photo {
+  overflow: hidden;
+  width: 140px;
+  height: 175px;
+  border-radius: var(--r-card);
+  background: var(--creme-profundo);
+}
+
+.intro__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.seal {
+  position: relative;
+  width: 60px;
+  height: 60px;
+}
+
+.intro__seal {
+  position: absolute;
+  top: 134px;
+  right: 110px;
+}
+
+.seal__ring {
+  width: 100%;
+  height: 100%;
+  fill: var(--oliva);
+}
+
+.seal__center {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding-bottom: 4px;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 28px;
+  line-height: 28px;
+  color: var(--vinho);
+  pointer-events: none;
+}
+
+.intro__lead {
+  margin-top: 6px;
+  font-size: 18px;
+  line-height: 27px;
+  font-weight: 500;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chip {
+  padding: 6px 10px;
+  border-radius: var(--r-chip);
+  background: var(--bordo-escuro);
+  color: var(--oliva);
+  font-size: 13px;
+  line-height: 18px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* --------------------------------------------------------------------------
+   Links com seta ("Ver detalhes", "Ver site")
+   -------------------------------------------------------------------------- */
+
+.link-arrow {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 48px;
+  font-size: 15px;
+  line-height: 20px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+/* Sublinhado só no texto, sem passar embaixo da seta */
+.link-arrow::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 12px;
+  width: calc(100% - 22px);
+  height: 2px;
+  background: currentColor;
+  transform-origin: left center;
+  transition: transform 0.4s var(--ease-out);
+}
+
+.link-arrow svg {
+  width: 14px;
+  height: 14px;
+  transition: transform 0.4s var(--ease-out);
+}
+
+@media (hover: hover) {
+  .link-arrow:hover::before {
+    transform: scaleX(0.6);
+  }
+
+  .link-arrow:hover svg {
+    transform: translateX(4px);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   2. Carrossel de serviços
+   -------------------------------------------------------------------------- */
+
+.services {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.carousel {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.carousel__track,
+.showcase__track {
+  display: flex;
+  gap: 12px;
+  margin: 0 -20px;
+  padding: 0 20px;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scroll-padding: 0 20px;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.carousel__track::-webkit-scrollbar,
+.showcase__track::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel__track:focus-visible,
+.showcase__track:focus-visible {
+  outline-offset: -3px;
+}
+
+.service {
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 calc(100% - 50px);
+  min-height: 376px;
+  padding: 20px;
+  border-radius: var(--r-card);
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+.service--creme {
+  background: var(--creme);
+  color: var(--marrom);
+}
+
+.service--oliva {
+  background: var(--oliva);
+  color: var(--vinho);
+}
+
+.service--bordo {
+  background: var(--bordo);
+  color: var(--creme);
+}
+
+.service__icon {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+}
+
+.service__icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.service--creme .service__icon { background: var(--bordo); color: var(--creme); }
+.service--oliva .service__icon { background: var(--vinho); color: var(--oliva); }
+.service--bordo .service__icon { background: var(--oliva); color: var(--vinho); }
+
+.service__title {
+  margin-top: 20px;
+  font-size: 27px;
+  line-height: 28px;
+  font-weight: 800;
+  font-stretch: 75%;
+  text-transform: uppercase;
+}
+
+.service--creme .service__title { color: var(--marrom); }
+.service--oliva .service__title { color: var(--vinho); }
+
+.service__text {
+  margin-top: 10px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--linha-escura);
+  font-size: 15px;
+  line-height: 22px;
+}
+
+.service--bordo .service__text {
+  border-bottom-color: var(--linha-clara);
+}
+
+.service__list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 14px;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.service__list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.service__list svg {
+  flex: none;
+  width: 10px;
+  height: 10px;
+  margin-top: 5px;
+}
+
+.service--creme .service__list svg { color: var(--bordo); }
+.service--oliva .service__list svg { color: var(--vinho); }
+.service--bordo .service__list svg { color: var(--oliva); }
+
+.service__link {
+  margin-top: auto;
+  align-self: flex-start;
+}
+
+.service--creme .service__link { color: var(--marrom); }
+.service--oliva .service__link { color: var(--vinho); }
+
+/* Indicador: o card atual vira uma pílula oliva */
+.carousel__dots {
+  display: flex;
+  align-items: center;
+  margin: -4px 0 -4px -6px;
+}
+
+.carousel__dot {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 48px;
+  padding: 0;
+  border: 0;
+  background: none;
+}
+
+.carousel__dot::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--bordo);
+  transition: width 0.4s var(--ease-out), background-color 0.4s var(--ease-out);
+}
+
+.carousel__dot[aria-current="true"] {
+  width: 36px;
+}
+
+.carousel__dot[aria-current="true"]::before {
+  width: 24px;
+  background: var(--oliva);
+}
+
+/* --------------------------------------------------------------------------
+   Botões
+   -------------------------------------------------------------------------- */
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 52px;
+  padding: 12px 20px;
+  border-radius: var(--r-btn);
+  font-size: 15px;
+  line-height: 20px;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+  /* Soltar o toque: volta em 160ms */
+  transition: transform 0.16s ease-out, background-color 0.16s ease-out, color 0.16s ease-out, border-color 0.16s ease-out;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.btn svg {
+  flex: none;
+  width: 16px;
+  height: 16px;
+}
+
+/* No toque: encolhe para 97% e clareia em 120ms */
+.btn:active {
+  transform: scale(0.97);
+  transition-duration: 0.12s;
+}
+
+.btn--outline {
+  margin-top: 24px;
+  border: 2px solid var(--creme);
+  color: var(--creme);
+}
+
+.btn--outline svg {
+  width: 14px;
+  height: 14px;
+}
+
+.btn--outline:active {
+  background: var(--bordo-escuro);
+}
+
+.btn--oliva {
+  background: var(--oliva);
+  color: var(--vinho);
+}
+
+.btn--oliva:active {
+  background: var(--oliva-hover);
+}
+
+.btn--big {
+  min-height: 58px;
+  font-size: 17px;
+  line-height: 22px;
+}
+
+.btn--outline-oliva {
+  margin-top: 16px;
+  border: 2px solid var(--oliva);
+  color: var(--creme);
+}
+
+.btn--outline-oliva svg {
+  width: 18px;
+  height: 18px;
+  color: var(--oliva);
+}
+
+.btn--outline-oliva:active {
+  background: var(--bordo-escuro);
+}
+
+@media (hover: hover) {
+  .btn--outline:hover,
+  .btn--outline-oliva:hover {
+    background: var(--bordo-escuro);
+  }
+
+  .btn--oliva:hover {
+    background: var(--oliva-hover);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   4. Diagnóstico
+   -------------------------------------------------------------------------- */
+
+.cta {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 22px 20px 20px;
+  border-radius: var(--r-card);
+  background: var(--bordo);
+}
+
+.cta__star {
+  position: absolute;
+  top: -22px;
+  right: 14px;
+  width: 96px;
+  height: 96px;
+  color: var(--bordo-escuro);
+}
+
+.cta__title {
+  position: relative;
+  max-width: 300px;
+  font-size: 30px;
+  line-height: 32px;
+}
+
+.cta__title em {
+  font-size: 34px;
+}
+
+.cta__text {
+  position: relative;
+  font-size: 15px;
+  line-height: 22px;
+}
+
+.cta .btn {
+  position: relative;
+  margin-top: 6px;
+}
+
+/* --------------------------------------------------------------------------
+   5. Vitrine de sites
+   -------------------------------------------------------------------------- */
+
+.showcase {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-top: 32px;
+}
+
+.site {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 264px;
+  overflow: hidden;
+  border-radius: var(--r-card);
+  background: var(--creme);
+  color: var(--marrom);
+  scroll-snap-align: start;
+}
+
+.site__mockup {
+  position: relative;
+  height: 180px;
+  padding: 18px 46px 0 16px;
+}
+
+.site--oliva .site__mockup { background: var(--oliva); }
+.site--bordo .site__mockup { background: var(--bordo); }
+
+/* Moldura plana vinho com sombra dura (id visual 03 · mockups) */
+.browser {
+  overflow: hidden;
+  border-radius: 6px;
+  background: var(--creme-profundo);
+  box-shadow: 0 0 0 2px var(--vinho), 4px 4px 0 var(--vinho);
+}
+
+.browser__bar {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  height: 14px;
+  padding: 0 7px;
+  background: var(--vinho);
+}
+
+.browser__bar i {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--oliva);
+}
+
+.browser__bar i:nth-child(2) { background: var(--creme); }
+.browser__bar i:nth-child(3) { background: var(--bordo); }
+
+.browser img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  object-position: top;
+}
+
+/* Celular à direita e 20px mais baixo que o desktop */
+.phone {
+  position: absolute;
+  right: 12px;
+  top: 38px;
+  width: 62px;
+  height: 126px;
+  padding: 4px;
+  border-radius: 12px;
+  background: var(--vinho);
+  box-shadow: 3px 3px 0 var(--bordo);
+}
+
+.site--bordo .phone {
+  box-shadow: 3px 3px 0 var(--oliva);
+}
+
+.phone img {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  object-fit: cover;
+  object-position: top;
+}
+
+.site__body {
+  display: flex;
+  flex-direction: column;
+  padding: 16px 16px 4px;
+}
+
+.site__name {
+  font-size: 22px;
+  line-height: 24px;
+  font-weight: 800;
+  font-stretch: 75%;
+  text-transform: uppercase;
+}
+
+.site__segment {
+  margin-top: 4px;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--marrom-suave);
+}
+
+.site__link {
+  align-self: flex-start;
+  color: var(--bordo);
+}
+
+/* O cartão inteiro responde ao toque */
+.site__link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.site__link:focus-visible {
+  outline: none;
+}
+
+.site:focus-within {
+  outline: 3px solid var(--oliva);
+  outline-offset: 3px;
+}
+
+.site img {
+  transition: transform 0.8s var(--ease-out);
+}
+
+@media (hover: hover) {
+  .site:hover .browser img,
+  .site:hover .phone img {
+    transform: translateY(-4%);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   7. Rodapé
+   -------------------------------------------------------------------------- */
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  margin-top: 16px;
+  padding: 20px 18px 0;
+  border-top: 1px solid var(--linha-clara);
+  font-size: 13px;
+  line-height: 20px;
+}
+
+.footer p {
+  display: flex;
+  align-items: center;
+  min-height: 40px;
+}
+
+.footer a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 48px;
+  text-decoration: none;
+}
+
+.footer__link {
+  color: var(--oliva);
+  text-decoration: underline !important;
+  text-underline-offset: 3px;
+}
+
+/* --------------------------------------------------------------------------
+   Movimento
+   O estado inicial da entrada fica no CSS para não piscar antes do GSAP.
+   Sem JS ou com movimento reduzido, a classe .motion não existe.
+   -------------------------------------------------------------------------- */
+
+.motion [data-intro],
+.motion [data-intro-seal],
+.motion [data-intro-chip] {
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .btn:active {
+    transform: none;
+  }
+}

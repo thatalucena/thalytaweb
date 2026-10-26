@@ -14,7 +14,7 @@ Três peças, mesma marca, mesmo objetivo: gerar leads qualificados para **sites
 | Peça | Status | Endereço | Papel |
 |---|---|---|---|
 | Landing page (site principal) | **Pronta e publicada** | https://thalytalucena.vercel.app | Explica, prova e conduz ao formulário |
-| Link da bio | A fazer | `biothalyta.vercel.app` | Converte o clique do Instagram @thalyta.web |
+| Link da bio | **Pronto, falta publicar** | `biothalyta.vercel.app` | Converte o clique do Instagram @thalyta.web |
 | Formulário em etapas | A fazer | `contatothalyta.vercel.app` | Qualifica e grava o lead |
 
 Fluxo: Instagram → link da bio → formulário (principal), landing page ou WhatsApp. Anúncios → landing page → formulário. Todos repassam UTMs por query string.
@@ -45,11 +45,11 @@ thalytaweb/
 ├── print ref/                prints de referência (Loudly)
 ├── img/profile.jpeg          foto original
 ├── landing-page/             ← código da landing page publicada (ver landing-page/README.md)
-├── link-bio/                 link da bio (ref/ = telas aprovadas, img/ = fotos e prints)
+├── link-bio/                 link da bio: site/ = código (ver link-bio/site/README.md), ref/ = telas aprovadas, img/ = fotos e prints originais
 └── forms/                    formulário em etapas (ref/ = telas aprovadas, img/ = fotos e prints)
 ```
 
-Monorepo: um único repositório no GitHub e um projeto Vercel por pasta, cada um com seu **Root Directory**: `thalytalucena` → `landing-page`, `biothalyta` → `link-bio`, `contatothalyta` → `forms`. Os documentos da raiz valem para as três peças.
+Monorepo: um único repositório no GitHub e um projeto Vercel por pasta, cada um com seu **Root Directory**: `thalytalucena` → `landing-page`, `biothalyta` → `link-bio/site`, `contatothalyta` → `forms`. Os documentos da raiz valem para as três peças.
 
 **Preservar sempre:** `id visual/`, `references/`, `print ref/`, `design system/`, `img/`. São originais de referência.
 
@@ -192,6 +192,10 @@ Os arquivos `contexto/` foram escritos antes da implementação. Onde divergem, 
 | Site | "sem fidelidade" | Taxa de manutenção mensal |
 | Horário | "das 8h às 19h" (página de obrigado do 03) | **Sem horário.** Só "no mesmo dia útil" |
 | Subdomínios | `link.` / `contato.` | `*.vercel.app` próprios até comprar domínio |
+| Stack do link da bio | Astro, `links.ts`, sem GSAP | HTML/CSS/JS puros + **GSAP + Lenis** (pedido em 25/10/2026), `config.js` único |
+| Botão 3 do link da bio | "Ver a landing page" | **"Meu portfólio"** → `/portfolio` da LP (tela aprovada em `link-bio/ref`) |
+| WhatsApp do link da bio | "...conversar sobre {{interesse}}" | "...conversar sobre site e anúncios." |
+| Cantos no link da bio | Raios da LP (24px, pílula) | id visual 03: cartão 8px · botão 6px · chip 4px (telas de `link-bio/ref`) |
 | Menu | Âncoras na página | Páginas próprias `/servicos`, `/portfolio`, `/processo`, `/duvidas` |
 
 ---
@@ -200,13 +204,11 @@ Os arquivos `contexto/` foram escritos antes da implementação. Onde divergem, 
 
 Briefing completo: `contexto/01-link-da-bio.md` · instruções: `contexto/CLAUDE-linkbio.md`.
 
-### Recomendação de stack
-Seguir o mesmo padrão da LP: **HTML, CSS e JS puros**, página única, sem build. Reaproveitar de `landing-page/`: `tokens.css`, fontes, `no-widows.js`, padrão de `config.js` + `tracking.js`, botões `.btn`, pílulas, mockups `.browser` e os prints de `assets/img/portfolio/`. GSAP/Lenis **não** são necessários (página curta, meta < 1s); no máximo transições CSS, respeitando `prefers-reduced-motion`. Pasta `link-bio/` no monorepo, com projeto Vercel próprio (Root Directory `link-bio`).
-
-> O briefing pede Astro e `links.ts`. **Decisão confirmada em 25/10/2026:** HTML, CSS e JS puros, como a LP, com um `links.js` (ou `config.js`) único com todos os links e textos.
+### Stack (implementada em 25/10/2026)
+**HTML, CSS e JS puros + GSAP 3.12.5 + ScrollTrigger + Lenis 1.1.13**, página única, sem build, em `link-bio/site/`. Reaproveita da LP as fontes, o `tokens.css` (mesmos hex), o padrão de `config.js` + `tracking.js`, o `no-widows.js`, os vendors e os prints do portfólio. Lenis só na roda do mouse e no trackpad; no toque o scroll fica nativo. Detalhes em `link-bio/site/README.md`.
 
 ### Estrutura (ordem fixa)
-1. **Apresentação:** foto (`thalyta-avatar`), "Thalyta Lucena", @thalyta.web, linha "Sites que vendem e anúncios que trazem cliente, no mesmo plano.", chips `+150 clientes` · `+R$ 20 milhões gerados` · `5 anos de estrada`.
+1. **Apresentação:** retrato 4x5 (`thalyta-retrato-4x5`) com o selo "tl", "Thalyta Lucena", @thalyta.web, linha "Sites que vendem e anúncios que trazem cliente, no mesmo plano.", chips `+150 clientes` · `+R$ 20 milhões gerados` · `5 anos de estrada`.
 2. **Carrossel de serviços** (scroll-snap nativo, 1 card por vez, indicador de posição): Sites que convertem · Tráfego pago · Estratégia de mídia paga. Cada card: ícone, título, 1 frase, 3 itens, "Ver detalhes" → `https://thalytalucena.vercel.app/servicos`.
 3. **Botão:** Ver a landing page.
 4. **Botão principal (maior destaque, bordô):** Quero meu diagnóstico → formulário (enquanto não existir, WhatsApp com mensagem, mesma lógica da LP).
@@ -266,7 +268,7 @@ Preencher `formUrl` em `landing-page/assets/js/config.js` (URL completa) e no li
 ## 11. Pendências gerais
 1. Preencher `gaId` e `metaPixelId` em `landing-page/assets/js/config.js`.
 2. Criar e publicar o formulário; preencher `formUrl`.
-3. Criar e publicar o link da bio; trocar o link do perfil @thalyta.web.
+3. Publicar o link da bio (projeto Vercel `biothalyta`, Root Directory `link-bio/site`), testar no navegador do Instagram (iOS e Android) e trocar o link do perfil @thalyta.web.
 4. Comprar domínio e migrar para `{{DOMINIO}}`, `link.` e `contato.`; atualizar sitemap, canonical, OG e `llms.txt`.
 5. Retrato profissional ≥ 1000px.
 6. Dados reais dos 5 sites do portfólio (leads, velocidade, posição no Google), se quiser exibir.
